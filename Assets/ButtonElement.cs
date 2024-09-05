@@ -1,0 +1,47 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using LitMotion;
+public class ButtonElement : Element
+{
+    Vector3 startingPos;
+    Vector2 startingSize;
+    public Vector3 hoverOverOffset;
+    public Vector2 hoverOverSize;
+    public float transitionTime;
+    public Ease easing;
+    protected override void Start()
+    {
+        base.Start();
+        startingPos = rectTransform.position;
+        startingSize = rectTransform.rect.size;
+    }
+    protected override void OnMouseOverEnter()
+    {
+        base.OnMouseOverEnter();
+        LMotion.Create(rectTransform.position, rectTransform.position+hoverOverOffset, transitionTime)
+        .WithEase(easing)
+        .Bind(x => rectTransform.position = x);
+        LMotion.Create(rectTransform.rect.size, rectTransform.rect.size + hoverOverSize, transitionTime)
+            .WithEase(easing)
+        .Bind((Vector2 x) => {
+            rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, x.x);
+            rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, x.y);
+        }
+        );
+    }
+    protected override void OnMouseOverExit()
+    {
+        base.OnMouseOverExit();
+        LMotion.Create(rectTransform.position, startingPos, transitionTime)
+        .WithEase(easing)
+        .Bind(x => rectTransform.position = x);
+        LMotion.Create(rectTransform.rect.size, startingSize, transitionTime)
+            .WithEase(easing)
+        .Bind((Vector2 x) => {
+            rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, x.x);
+            rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, x.y);
+        }
+        );
+    }
+}
