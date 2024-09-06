@@ -28,23 +28,31 @@ public class Highlighter : MonoBehaviour
                 }
                 rectTransform.SetSiblingIndex(newSiblingIndex);
                 //do the move to the new selected object
-                LMotion.Create(rectTransform.position, targetRect.position, transitionTime)
-                    .WithEase(easing)
-                    .Bind(x => rectTransform.position = x);
-                LMotion.Create(rectTransform.rect.width, targetRect.rect.width * targetRect.lossyScale.x + size.x, transitionTime)
-                    .WithEase(easing)
-                    .Bind(x => rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, x));
-                LMotion.Create(rectTransform.rect.height, targetRect.rect.height * targetRect.lossyScale.y + size.y, transitionTime)
-                    .WithEase(easing)
-                    .Bind(x => rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, x));
+                DoPositionMotion(targetRect);
+                DoSizeMotion(targetRect);
             }
             _SelectedObject = SelectedObject;
         }
     }
-    protected virtual void DoPositionMotion()
+    protected virtual void DoPositionMotion(RectTransform targetRect)
     {
+        LMotion.Create(rectTransform.position, targetRect.position, transitionTime)
+            .WithEase(easing)
+            .Bind(x => rectTransform.position = x);
     }
     protected virtual void DoRotationMotion() 
     { 
+    }
+    protected virtual void DoSizeMotion(RectTransform targetRect)
+    {
+        Vector2 targetSize = targetRect.rect.size + size;
+        targetSize.Scale(targetRect.lossyScale);
+        LMotion.Create(rectTransform.rect.size, targetSize, transitionTime)
+            .WithEase(easing)
+            .Bind(x =>
+            {
+                rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, x.x);
+                rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, x.y);
+            });
     }
 }

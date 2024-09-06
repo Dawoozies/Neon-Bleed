@@ -10,6 +10,7 @@ public class ImageColorPaletteApply : MonoBehaviour
     Image image;
     public int paletteIndex;
     public ColorPaletteMotionData motionData;
+    Color color;
     protected virtual void Start()
     {
         image = GetComponent<Image>();
@@ -28,6 +29,10 @@ public class ImageColorPaletteApply : MonoBehaviour
         LMotion.Create(image.color, targetColor, motionData.transitionTime)
             .WithDelay(motionData.delay)
             .WithEase(motionData.easing)
-            .Bind(x => image.color = x);
+            .Bind(x => {
+                color = x;
+                color.a = image.color.a;
+                image.color = color;
+            });
     }
 }

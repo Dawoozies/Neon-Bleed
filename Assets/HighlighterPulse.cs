@@ -2,34 +2,41 @@ using LitMotion;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 public class HighlighterPulse : Highlighter
 {
+    public float delay;
     public Vector2 startingSize;
-    protected override void Update()
+    public float pulseTransitionTime;
+    Image image;
+    Color color;
+    public Vector2 alphaValues;
+    protected override void Start()
     {
-        if (_SelectedObject != SelectedObject)
-        {
-            RectTransform targetRect;
-            if (SelectedObject.TryGetComponent(out targetRect))
-            {
-                int newSiblingIndex = targetRect.GetSiblingIndex() - 1;
-                if (targetRect.GetSiblingIndex() == 0)
-                {
-                    newSiblingIndex = 0;
-                }
-                rectTransform.SetSiblingIndex(newSiblingIndex);
-                //do the move to the new selected object
-                LMotion.Create(rectTransform.position, targetRect.position, transitionTime)
-                    .WithEase(easing)
-                    .Bind(x => rectTransform.position = x);
-                LMotion.Create(rectTransform.rect.width, targetRect.rect.width * targetRect.lossyScale.x + size.x, transitionTime)
-                    .WithEase(easing)
-                    .Bind(x => rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, x));
-                LMotion.Create(rectTransform.rect.height, targetRect.rect.height * targetRect.lossyScale.y + size.y, transitionTime)
-                    .WithEase(easing)
-                    .Bind(x => rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, x));
-            }
-            _SelectedObject = SelectedObject;
-        }
+        base.Start();
+        image = GetComponent<Image>();
+    }
+    protected override void DoSizeMotion(RectTransform targetRect)
+    {
+        Vector2 targetSize = targetRect.rect.size + size;
+        targetSize.Scale(targetRect.lossyScale);
+        Vector2 startSize = targetRect.rect.size + startingSize;
+        startSize.Scale(targetRect.lossyScale);
+        LMotion.Create(startingSize, targetSize, pulseTransitionTime)
+            .WithDelay(delay)
+            .WithEase(easing)
+            .Bind(x => {
+                rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, x.x);
+                rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, x.y);
+            });
+
+        LMotion.Create(alphaValues.x, alphaValues.y, pulseTransitionTime)
+            .WithDelay(delay)
+            .WithEase(easing)
+            .Bind(x => {
+                color = image.color;
+                color.a = x;
+                image.color = color;
+            });
     }
 }
