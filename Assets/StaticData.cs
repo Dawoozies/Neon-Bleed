@@ -8,4 +8,5 @@ public class StaticData : MonoBehaviour
     {
         ins = this;
     }
+    public ColorPalette ActiveColorPalette;
 }
