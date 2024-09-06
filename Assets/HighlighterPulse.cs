@@ -1,28 +1,19 @@
+using LitMotion;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using LitMotion;
-public class Highlighter : MonoBehaviour
+public class HighlighterPulse : Highlighter
 {
-    protected GameObject SelectedObject => Elements.ins.selectedObject;
-    protected GameObject _SelectedObject;
-    protected RectTransform rectTransform;
-    [SerializeField] protected Vector2 size;
-    [SerializeField] protected float transitionTime;
-    [SerializeField] protected Ease easing;
-    protected virtual void Start()
+    public Vector2 startingSize;
+    protected override void Update()
     {
-        rectTransform = GetComponent<RectTransform>();
-    }
-    protected virtual void Update()
-    {
-        if(_SelectedObject != SelectedObject)
+        if (_SelectedObject != SelectedObject)
         {
             RectTransform targetRect;
-            if(SelectedObject.TryGetComponent(out targetRect))
+            if (SelectedObject.TryGetComponent(out targetRect))
             {
                 int newSiblingIndex = targetRect.GetSiblingIndex() - 1;
-                if(targetRect.GetSiblingIndex() == 0)
+                if (targetRect.GetSiblingIndex() == 0)
                 {
                     newSiblingIndex = 0;
                 }
@@ -40,11 +31,5 @@ public class Highlighter : MonoBehaviour
             }
             _SelectedObject = SelectedObject;
         }
-    }
-    protected virtual void DoPositionMotion()
-    {
-    }
-    protected virtual void DoRotationMotion() 
-    { 
     }
 }

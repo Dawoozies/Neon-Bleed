@@ -18,6 +18,15 @@
       "dependencies": {},
       "hash": "e11ce9c12c65c12f3bc35ae2ef7cacde6826e503"
     },
+    "com.browar.editor-toolbox": {
+      "version": "https://github.com/arimger/Unity-Editor-Toolbox.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.editorcoroutines": "1.0.0"
+      },
+      "hash": "53b9bed8338295e685fedd94dd0bd24aa5b5bc3c"
+    },
     "com.inspiaaa.unityhfsm": {
       "version": "https://github.com/Inspiaaa/UnityHFSM.git#upm",
       "depth": 0,
@@ -145,6 +154,13 @@
         "com.unity.test-framework": "1.1.31",
         "com.unity.nuget.mono-cecil": "1.11.4"
       },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.editorcoroutines": {
+      "version": "1.0.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.ext.nunit": {
