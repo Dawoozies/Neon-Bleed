@@ -11,6 +11,8 @@ public class HighlighterPulse : Highlighter
     Image image;
     Color color;
     public Vector2 alphaValues;
+
+    MotionHandle mainMotionHandle;
     protected override void Start()
     {
         base.Start();
@@ -18,11 +20,15 @@ public class HighlighterPulse : Highlighter
     }
     protected override void DoSizeMotion(RectTransform targetRect)
     {
+        if (mainMotionHandle.IsActive())
+        {
+            return;
+        }
         Vector2 targetSize = targetRect.rect.size + size;
         targetSize.Scale(targetRect.lossyScale);
         Vector2 startSize = targetRect.rect.size + startingSize;
         startSize.Scale(targetRect.lossyScale);
-        LMotion.Create(startingSize, targetSize, pulseTransitionTime)
+        mainMotionHandle = LMotion.Create(startingSize, targetSize, pulseTransitionTime)
             .WithDelay(delay)
             .WithEase(easing)
             .Bind(x => {

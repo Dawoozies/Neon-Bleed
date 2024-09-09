@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class Element : MonoBehaviour
+using UnityHFSM;
+public partial class Element : MonoBehaviour
 {
     protected GameObject SelectedObject => Elements.ins.selectedObject;
     protected bool isSelected;
     protected RectTransform rectTransform;
+
     protected virtual void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+        screenStateMachine.AddState(ScreenState.OffScreen, OffScreen_OnEnter, OffScreen_OnLogic);
+        screenStateMachine.AddState(ScreenState.TransitionToOnScreen, TransitionToOnScreen_OnEnter, TransitionToOnScreen_OnLogic);
+        screenStateMachine.AddState(ScreenState.OnScreen, OnScreen_OnEnter, OnScreen_OnLogic);
+        screenStateMachine.AddState(ScreenState.TransitionToOffScreen, TransitionToOffScreen_OnEnter, TransitionToOffScreen_OnLogic);
+        screenStateMachine.Init();
     }
     protected virtual void Update()
     {
