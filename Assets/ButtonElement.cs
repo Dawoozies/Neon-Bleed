@@ -4,7 +4,6 @@ using UnityEngine;
 using LitMotion;
 public class ButtonElement : Element
 {
-    Vector3 startingPos;
     Vector2 startingSize;
     public Vector3 hoverOverOffset;
     public Vector2 hoverOverSize;
@@ -13,13 +12,12 @@ public class ButtonElement : Element
     protected override void Start()
     {
         base.Start();
-        startingPos = rectTransform.position;
         startingSize = rectTransform.rect.size;
     }
     protected override void OnMouseOverEnter()
     {
         base.OnMouseOverEnter();
-        LMotion.Create(rectTransform.position, rectTransform.position+hoverOverOffset, transitionTime)
+        LMotion.Create(rectTransform.position, rectTransform.position + hoverOverOffset, transitionTime)
         .WithEase(easing)
         .Bind(x => rectTransform.position = x);
         LMotion.Create(rectTransform.rect.size, rectTransform.rect.size + hoverOverSize, transitionTime)
@@ -33,7 +31,7 @@ public class ButtonElement : Element
     protected override void OnMouseOverExit()
     {
         base.OnMouseOverExit();
-        LMotion.Create(rectTransform.position, startingPos, transitionTime)
+        LMotion.Create(rectTransform.position, onScreenPosition, transitionTime)
         .WithEase(easing)
         .Bind(x => rectTransform.position = x);
         LMotion.Create(rectTransform.rect.size, startingSize, transitionTime)
