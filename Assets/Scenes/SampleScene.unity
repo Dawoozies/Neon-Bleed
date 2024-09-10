@@ -943,6 +943,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1024,6 +1025,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61356d6896243e84b83865632ada5f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paletteIndex: 0
+  motionData: {fileID: 11400000, guid: 86edfa3aeff8d924e973b912bb57cbbe, type: 2}
+  intensityMultiplier: 0.1
 --- !u!1001 &564122135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3392,7 +3408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1baca17f099db1b4396d9ba920b09068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActiveColorPalette: {fileID: 11400000, guid: 1627c857dff1cc94ba9d14083c33ae2b, type: 2}
+  ActiveColorPalette: {fileID: 11400000, guid: 8643433991d23474396dde5c69d34c24, type: 2}
   OffScreenLines:
   - points:
     - {fileID: 1130379129}
