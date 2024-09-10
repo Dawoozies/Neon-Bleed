@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,8 +19,8 @@ public class Elements : MonoBehaviour
     GraphicRaycaster raycaster;
     PointerEventData pointerEventData;
     EventSystem eventSystem;
-
-    public GameObject selectedObject;
+    GameObject selectedObject;
+    public Dictionary<int, List<Action<GameObject>>> onSelectedObjectChangedActions = new();
     void Start()
     {
         raycaster = GetComponent<GraphicRaycaster>();
@@ -33,7 +34,36 @@ public class Elements : MonoBehaviour
         raycaster.Raycast(pointerEventData, results);
         if(results.Count > 0)
         {
-            selectedObject = results[0].gameObject;
+            if(selectedObject != results[0].gameObject)
+            {
+                selectedObject = results[0].gameObject;
+                foreach (int key in onSelectedObjectChangedActions.Keys)
+                {
+                    foreach (var item in onSelectedObjectChangedActions[key])
+                    {
+                        item.Invoke(selectedObject);
+                    }
+                }
+            }
+        }
+    }
+    public void RegisterSelectedObjectChangeCallback(Action<GameObject> a, int priority)
+    {
+        if (onSelectedObjectChangedActions.ContainsKey(priority))
+        {
+            onSelectedObjectChangedActions[priority].Add(a);
+        }
+        else
+        {
+            onSelectedObjectChangedActions.Add(priority, new List<Action<GameObject>> { a });
+        }
+    }
+    public void RemoveSelectedObjectChangeCallback(Action<GameObject> a, int priority)
+    {
+        if(onSelectedObjectChangedActions.ContainsKey(priority))
+        {
+            if (onSelectedObjectChangedActions[priority].Contains(a))
+                onSelectedObjectChangedActions[priority].Remove(a);
         }
     }
 }

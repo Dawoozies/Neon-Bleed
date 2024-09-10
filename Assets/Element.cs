@@ -5,9 +5,10 @@ using UnityEngine;
 using UnityHFSM;
 public class Element : MonoBehaviour
 {
-    protected GameObject SelectedObject => Elements.ins.selectedObject;
     protected bool isSelected;
     protected RectTransform rectTransform;
+    protected Menu encapsulatingMenu;
+    protected bool inMenu;
     public enum ScreenState
     {
         OffScreen,
@@ -21,9 +22,15 @@ public class Element : MonoBehaviour
     public float onScreenTransitionTime;
     public Ease onScreenTransitionEasing;
     protected StateMachine<ScreenState> screenStateMachine;
+    protected MotionHandle transitionMotionHandle;
     protected virtual void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+        Elements.ins.RegisterSelectedObjectChangeCallback(OnSelectedObjectChanged, 1);
+        encapsulatingMenu = GetComponentInParent<Menu>();
+        if (encapsulatingMenu != null)
+            inMenu = true;
+
         onScreenPosition = rectTransform.position;
         rectTransform.position = StaticData.ins.OffScreenPoint(rectTransform.position, offScreenSide);
         screenStateMachine = new StateMachine<ScreenState>();
@@ -34,13 +41,19 @@ public class Element : MonoBehaviour
         screenStateMachine.SetStartState(screenState);
         screenStateMachine.Init();
     }
+    protected virtual void OnDestroy()
+    {
+        Elements.ins.RemoveSelectedObjectChangeCallback(OnSelectedObjectChanged, 1);
+    }
     protected virtual void Update()
     {
-        if(gameObject == SelectedObject)
+    }
+    protected virtual void OnSelectedObjectChanged(GameObject selectedObject)
+    {
+        if(gameObject == selectedObject)
         {
-            if(!isSelected)
+            if (!isSelected)
             {
-                //first frame this has been selected
                 OnMouseOverEnter();
                 isSelected = true;
             }
@@ -49,12 +62,10 @@ public class Element : MonoBehaviour
                 OnMouseOverUpdate();
             }
         }
-
-        if(gameObject != SelectedObject)
+        if(gameObject != selectedObject)
         {
             if(isSelected)
             {
-                //first frame this has been not selected
                 OnMouseOverExit();
                 isSelected = false;
             }

@@ -17,6 +17,10 @@ public class ButtonElement : Element
     protected override void OnMouseOverEnter()
     {
         base.OnMouseOverEnter();
+        if(inMenu)
+        {
+            rectTransform.SetParent(encapsulatingMenu.GetPriorityTransform());
+        }
         LMotion.Create(rectTransform.position, rectTransform.position + hoverOverOffset, transitionTime)
         .WithEase(easing)
         .Bind(x => rectTransform.position = x);
@@ -31,6 +35,10 @@ public class ButtonElement : Element
     protected override void OnMouseOverExit()
     {
         base.OnMouseOverExit();
+        if (inMenu)
+        {
+            rectTransform.SetParent(encapsulatingMenu.GetElementsTransform());
+        }
         LMotion.Create(rectTransform.position, onScreenPosition, transitionTime)
         .WithEase(easing)
         .Bind(x => rectTransform.position = x);

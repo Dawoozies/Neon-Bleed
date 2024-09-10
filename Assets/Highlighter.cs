@@ -4,8 +4,6 @@ using UnityEngine;
 using LitMotion;
 public class Highlighter : MonoBehaviour
 {
-    protected GameObject SelectedObject => Elements.ins.selectedObject;
-    protected GameObject _SelectedObject;
     protected RectTransform rectTransform;
     [SerializeField] protected Vector2 size;
     [SerializeField] protected float transitionTime;
@@ -13,25 +11,31 @@ public class Highlighter : MonoBehaviour
     protected virtual void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+        Elements.ins.RegisterSelectedObjectChangeCallback(OnSelectedObjectChanged, 0);
+    }
+    protected virtual void OnDestroy()
+    {
+        Elements.ins.RemoveSelectedObjectChangeCallback(OnSelectedObjectChanged, 0);
     }
     protected virtual void Update()
     {
-        if(_SelectedObject != SelectedObject)
+    }
+    protected virtual void OnSelectedObjectChanged(GameObject selectedObject)
+    {
+        RectTransform targetRect;
+        if (selectedObject.TryGetComponent(out targetRect))
         {
-            RectTransform targetRect;
-            if(SelectedObject.TryGetComponent(out targetRect))
+            rectTransform.SetParent(targetRect.parent);
+            //ensure we follow the selected object to where it goes
+            int newSiblingIndex = targetRect.GetSiblingIndex() - 1;
+            if (targetRect.GetSiblingIndex() == 0)
             {
-                int newSiblingIndex = targetRect.GetSiblingIndex() - 1;
-                if(targetRect.GetSiblingIndex() == 0)
-                {
-                    newSiblingIndex = 0;
-                }
-                rectTransform.SetSiblingIndex(newSiblingIndex);
-                //do the move to the new selected object
-                DoPositionMotion(targetRect);
-                DoSizeMotion(targetRect);
+                newSiblingIndex = 0;
             }
-            _SelectedObject = SelectedObject;
+            rectTransform.SetSiblingIndex(newSiblingIndex);
+            //do the move to the new selected object
+            DoPositionMotion(targetRect);
+            DoSizeMotion(targetRect);
         }
     }
     protected virtual void DoPositionMotion(RectTransform targetRect)
