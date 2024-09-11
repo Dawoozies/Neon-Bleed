@@ -857,6 +857,7 @@ GameObject:
   - component: {fileID: 448183437}
   - component: {fileID: 448183439}
   - component: {fileID: 448183438}
+  - component: {fileID: 448183440}
   m_Layer: 5
   m_Name: TextArea
   m_TagString: Untagged
@@ -880,9 +881,9 @@ RectTransform:
   - {fileID: 696167174}
   m_Father: {fileID: 1791569992}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 81.154}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1036, y: -39}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 244, y: -39}
   m_SizeDelta: {x: 2560, y: 325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &448183438
@@ -923,6 +924,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448183436}
   m_CullTransparentMesh: 1
+--- !u!114 &448183440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448183436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71fcfa4e76beef742bfadbb993c40add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenState: 1
+  offScreenSide: 0
+  onScreenTransitionTime: 0.8
+  onScreenTransitionEasing: 3
+  hasDelay: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,7 +978,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.034796707, g: 0, b: 0.1792453, a: 0.2}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0.2}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2800,12 +2818,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 2560, y: 1440}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2874,7 +2892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1baca17f099db1b4396d9ba920b09068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActiveColorPalette: {fileID: 11400000, guid: 8643433991d23474396dde5c69d34c24, type: 2}
+  ActiveColorPalette: {fileID: 11400000, guid: 1627c857dff1cc94ba9d14083c33ae2b, type: 2}
   OffScreenLines:
   - points:
     - {fileID: 1130379129}
@@ -3030,6 +3048,7 @@ GameObject:
   - component: {fileID: 1886939210}
   - component: {fileID: 1886939212}
   - component: {fileID: 1886939211}
+  - component: {fileID: 1886939213}
   m_Layer: 5
   m_Name: TextArea (1)
   m_TagString: Untagged
@@ -3053,10 +3072,10 @@ RectTransform:
   - {fileID: 695730322}
   m_Father: {fileID: 1791569992}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -98.704}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 676, y: -37}
-  m_SizeDelta: {x: 2560, y: 151.2903}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -604, y: -37}
+  m_SizeDelta: {x: 2560, y: 151.29028}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1886939211
 MonoBehaviour:
@@ -3096,6 +3115,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1886939209}
   m_CullTransparentMesh: 1
+--- !u!114 &1886939213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886939209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71fcfa4e76beef742bfadbb993c40add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenState: 1
+  offScreenSide: 1
+  onScreenTransitionTime: 0.8
+  onScreenTransitionEasing: 3
+  hasDelay: 0
 --- !u!1 &1942373421
 GameObject:
   m_ObjectHideFlags: 0

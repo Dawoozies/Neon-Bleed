@@ -23,6 +23,7 @@ public class Element : MonoBehaviour
     public Ease onScreenTransitionEasing;
     protected StateMachine<ScreenState> screenStateMachine;
     protected MotionHandle transitionMotionHandle;
+    public bool hasDelay;
     protected virtual void Start()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -92,10 +93,19 @@ public class Element : MonoBehaviour
     protected virtual void TransitionToOnScreen_OnEnter(StateBase<ScreenState> state)
     {
         //start transition
-        LMotion.Create(StaticData.ins.OffScreenPoint(rectTransform.position, offScreenSide), onScreenPosition, onScreenTransitionTime)
-            .WithEase(onScreenTransitionEasing)
-            .WithDelay(StaticData.ins.GetDelay(rectTransform.position, offScreenSide))
-            .Bind(x => rectTransform.position = x);
+        if(!hasDelay)
+        {
+            LMotion.Create(StaticData.ins.OffScreenPoint(rectTransform.position, offScreenSide), onScreenPosition, onScreenTransitionTime)
+                .WithEase(onScreenTransitionEasing)
+                .Bind(x => rectTransform.position = x);
+        }
+        else
+        {
+            LMotion.Create(StaticData.ins.OffScreenPoint(rectTransform.position, offScreenSide), onScreenPosition, onScreenTransitionTime)
+                .WithEase(onScreenTransitionEasing)
+                .WithDelay(StaticData.ins.GetDelay(rectTransform.position, offScreenSide))
+                .Bind(x => rectTransform.position = x);
+        }
     }
     protected virtual void TransitionToOnScreen_OnLogic(StateBase<ScreenState> state)
     {
