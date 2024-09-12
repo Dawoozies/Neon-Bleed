@@ -15,16 +15,12 @@ public class StaticData : MonoBehaviour
     [SerializeField] LineRenderer OffScreenLineRenderer;
     public float SharedDelayDelta;
     public float CurrentDelayDelta;
-    public Canvas Canvas;
-    public Vector2 AspectRatio;
     void Update()
     {
         for (int i = 0; i < OffScreenCorners.Length; i++)
         {
             OffScreenLineRenderer.SetPosition(i, OffScreenCorners[i].position);
         }
-
-        AspectRatio = Canvas.pixelRect.size;
     }
     public Vector3 OffScreenPoint(Vector3 elementPos, OffScreenSide offScreenSide)
     {
