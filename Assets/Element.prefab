@@ -181,8 +181,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenState: 1
+  startingScreenState: 1
   offScreenSide: 0
-  onScreenTransitionTime: 0.2
+  onScreenTransitionTime: 0.05
   onScreenTransitionEasing: 17
   hasDelay: 1
   hoverOverOffset: {x: 5, y: 0, z: 0}

@@ -24,10 +24,10 @@ public class HighlighterPulse : Highlighter
         {
             return;
         }
-        Vector2 targetSize = targetRect.rect.size + size;
-        targetSize.Scale(targetRect.lossyScale);
-        Vector2 startSize = targetRect.rect.size + startingSize;
-        startSize.Scale(targetRect.lossyScale);
+        Vector2 targetSize = targetRect.sizeDelta + size;
+        //targetSize.Scale(targetRect.lossyScale);
+        Vector2 startSize = targetRect.sizeDelta + startingSize;
+        //startSize.Scale(targetRect.lossyScale);
         mainMotionHandle = LMotion.Create(startingSize, targetSize, pulseTransitionTime)
             .WithDelay(delay)
             .WithEase(easing)

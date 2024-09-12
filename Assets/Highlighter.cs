@@ -8,6 +8,8 @@ public class Highlighter : MonoBehaviour
     [SerializeField] protected Vector2 size;
     [SerializeField] protected float transitionTime;
     [SerializeField] protected Ease easing;
+    protected MotionHandle positionMotionHandle;
+    protected MotionHandle sizeMotionHandle;
     protected virtual void Start()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -40,18 +42,26 @@ public class Highlighter : MonoBehaviour
     }
     protected virtual void DoPositionMotion(RectTransform targetRect)
     {
-        LMotion.Create(rectTransform.position, targetRect.position, transitionTime)
+        if(positionMotionHandle.IsActive())
+        {
+            positionMotionHandle.Cancel();
+        }
+        positionMotionHandle = LMotion.Create(rectTransform.localPosition, targetRect.localPosition, transitionTime)
             .WithEase(easing)
-            .Bind(x => rectTransform.position = x);
+            .Bind(x => rectTransform.localPosition = x);
     }
     protected virtual void DoRotationMotion() 
     { 
     }
     protected virtual void DoSizeMotion(RectTransform targetRect)
     {
-        Vector2 targetSize = targetRect.rect.size + size;
-        targetSize.Scale(targetRect.lossyScale);
-        LMotion.Create(rectTransform.rect.size, targetSize, transitionTime)
+        if(sizeMotionHandle.IsActive())
+        {
+            sizeMotionHandle.Cancel();
+        }
+        Vector2 targetSize = targetRect.sizeDelta + size;
+        //targetSize.Scale(targetRect.lossyScale);
+        sizeMotionHandle = LMotion.Create(rectTransform.sizeDelta, targetSize, transitionTime)
             .WithEase(easing)
             .Bind(x =>
             {
