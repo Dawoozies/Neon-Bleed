@@ -31,7 +31,6 @@ public class Element : MonoBehaviour
         encapsulatingMenu = GetComponentInParent<Menu>();
         if (encapsulatingMenu != null)
             inMenu = true;
-
         onScreenPosition = rectTransform.position;
         rectTransform.position = StaticData.ins.OffScreenPoint(rectTransform.position, offScreenSide);
         screenStateMachine = new StateMachine<ScreenState>();

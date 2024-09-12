@@ -15,6 +15,7 @@ public class ScrollingTextArea : MonoBehaviour
     public string[] textChoices;
     public List<TextMeshProUGUI> textMeshes = new();
     public float scrollSpeed;
+    public float padding;
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -57,7 +58,7 @@ public class ScrollingTextArea : MonoBehaviour
             float halfWidthPrevious = (textMeshes[textMeshes.Count - 1].rectTransform.rect.size.x )/2f;
             //float halfWidthCurrent = (newTextMesh.preferredWidth * newTextMesh.pixelsPerUnit) / 2f;
             float halfWidthCurrent = (newTextMesh.rectTransform.rect.size.x) / 2f;
-            newTextMesh.rectTransform.localPosition = lastElementPos + Vector3.right * (halfWidthPrevious + halfWidthCurrent);
+            newTextMesh.rectTransform.localPosition = lastElementPos + Vector3.right * (halfWidthPrevious + halfWidthCurrent + padding);
         }
         else
         {
