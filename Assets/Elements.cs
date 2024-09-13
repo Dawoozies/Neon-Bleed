@@ -20,6 +20,7 @@ public class Elements : MonoBehaviour
     PointerEventData pointerEventData;
     EventSystem eventSystem;
     GameObject selectedObject;
+    public GameEvent selectedElementEvent;
     public Dictionary<int, List<Action<GameObject>>> onSelectedObjectChangedActions = new();
     void Start()
     {
