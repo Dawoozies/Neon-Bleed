@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityHFSM;
-public class Element : MonoBehaviour
+public class Element : MonoBehaviour, IObserver<GameObject>
 {
     protected bool isSelected;
     protected RectTransform rectTransform;
@@ -27,12 +27,22 @@ public class Element : MonoBehaviour
     protected MotionHandle transitionMotionHandle;
     public bool hasDelay;
     public ObservedGameObject ObservedSelectedObject;
+
+    public int OrderPriority { get => orderPriority; }
+    public int orderPriority;
+    protected virtual void OnEnable()
+    {
+        ObservedSelectedObject.RegisterObserver(this);
+    }
+    protected virtual void OnDisable()
+    {
+        ObservedSelectedObject.UnregsiterObserver(this);
+    }
     protected virtual void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        Elements.ins.RegisterSelectedObjectChangeCallback(OnSelectedObjectChanged, 1);
+        //Elements.ins.RegisterSelectedObjectChangeCallback(OnSelectedObjectChanged, 1);
         //intead of register selected object callback
-
 
         encapsulatingMenu = GetComponentInParent<Menu>();
         if (encapsulatingMenu != null)
@@ -49,7 +59,7 @@ public class Element : MonoBehaviour
     }
     protected virtual void OnDestroy()
     {
-        Elements.ins.RemoveSelectedObjectChangeCallback(OnSelectedObjectChanged, 1);
+        //Elements.ins.RemoveSelectedObjectChangeCallback(OnSelectedObjectChanged, 1);
     }
     protected virtual void Update()
     {
@@ -58,7 +68,7 @@ public class Element : MonoBehaviour
     protected virtual void OnAspectRatioChanged()
     {
     }
-    protected virtual void OnSelectedObjectChanged(GameObject selectedObject)
+    protected virtual void OnSelectedObjectChanged(GameObject prevSelectedObject, GameObject selectedObject)
     {
         if(gameObject == selectedObject)
         {
@@ -135,5 +145,10 @@ public class Element : MonoBehaviour
     }
     protected virtual void TransitionToOffScreen_OnLogic(StateBase<ScreenState> state)
     {
+    }
+
+    public void OnSetReference(GameObject previousRef, GameObject newRef)
+    {
+        throw new System.NotImplementedException();
     }
 }

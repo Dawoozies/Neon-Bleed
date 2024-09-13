@@ -48,6 +48,6 @@ public abstract class ObservedReference<T> : ScriptableObject
 }
 public interface IObserver<T>
 {
-    public int OrderPriority { get; set; }
+    public int OrderPriority { get; }
     public void OnSetReference(T previousRef, T newRef);
 }
