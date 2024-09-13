@@ -332,6 +332,8 @@ MonoBehaviour:
   size: {x: 150, y: 150}
   transitionTime: 0.1
   easing: 17
+  orderPriority: 1
+  ObservedSelectedObject: {fileID: 11400000, guid: 6f46bfe361979114ba78462f9fed9b67, type: 2}
   delay: 0
   startingSize: {x: 100, y: 100}
   pulseTransitionTime: 0.1
@@ -942,6 +944,8 @@ MonoBehaviour:
   onScreenTransitionTime: 0.8
   onScreenTransitionEasing: 3
   hasDelay: 0
+  ObservedSelectedObject: {fileID: 11400000, guid: 6f46bfe361979114ba78462f9fed9b67, type: 2}
+  orderPriority: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,6 +1439,8 @@ MonoBehaviour:
   size: {x: 0, y: 0}
   transitionTime: 0.4
   easing: 17
+  orderPriority: 0
+  ObservedSelectedObject: {fileID: 11400000, guid: 6f46bfe361979114ba78462f9fed9b67, type: 2}
   highlightObject: {fileID: 947608902}
   areas:
   - {fileID: 562679542}
@@ -2962,6 +2968,8 @@ MonoBehaviour:
   onScreenTransitionTime: 1
   onScreenTransitionEasing: 17
   hasDelay: 1
+  ObservedSelectedObject: {fileID: 11400000, guid: 6f46bfe361979114ba78462f9fed9b67, type: 2}
+  orderPriority: 0
 --- !u!1 &1631529920
 GameObject:
   m_ObjectHideFlags: 0
@@ -3138,6 +3146,8 @@ MonoBehaviour:
   onScreenTransitionTime: 0.3
   onScreenTransitionEasing: 2
   hasDelay: 1
+  ObservedSelectedObject: {fileID: 11400000, guid: 6f46bfe361979114ba78462f9fed9b67, type: 2}
+  orderPriority: 0
 --- !u!1001 &1705484435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3431,6 +3441,8 @@ MonoBehaviour:
   onScreenTransitionTime: 0.3
   onScreenTransitionEasing: 2
   hasDelay: 1
+  ObservedSelectedObject: {fileID: 11400000, guid: 6f46bfe361979114ba78462f9fed9b67, type: 2}
+  orderPriority: 0
 --- !u!1001 &1760069408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4002,6 +4014,8 @@ MonoBehaviour:
   onScreenTransitionTime: 0.8
   onScreenTransitionEasing: 3
   hasDelay: 0
+  ObservedSelectedObject: {fileID: 11400000, guid: 6f46bfe361979114ba78462f9fed9b67, type: 2}
+  orderPriority: 0
 --- !u!1 &1907796984
 GameObject:
   m_ObjectHideFlags: 0

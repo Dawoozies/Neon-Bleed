@@ -6,9 +6,9 @@ public abstract class ObservedReference<T> : ScriptableObject
 {
     //keep reference to thing
     //expose setter
-    public T Reference;
+    protected T Reference;
     protected Dictionary<int, List<IObserver<T>>> observerPriorityLookUp = new();
-    public void SetReference(T newRef)
+    public virtual void SetReference(T newRef)
     {
         //before changing we can fire off events for what previous reference was and new reference is
         T previousRef = Reference;
@@ -26,7 +26,7 @@ public abstract class ObservedReference<T> : ScriptableObject
     {
         return Reference;
     }
-    public void RegisterObserver(IObserver<T> observer)
+    public virtual void RegisterObserver(IObserver<T> observer)
     {
         if(observerPriorityLookUp.ContainsKey(observer.OrderPriority))
         {
@@ -37,7 +37,7 @@ public abstract class ObservedReference<T> : ScriptableObject
             observerPriorityLookUp.Add(observer.OrderPriority, new List<IObserver<T>> { observer });
         }
     }
-    public void UnregsiterObserver(IObserver<T> observer)
+    public virtual void UnregsiterObserver(IObserver<T> observer)
     {
         if(observerPriorityLookUp.ContainsKey(observer.OrderPriority))
         {

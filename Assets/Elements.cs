@@ -51,7 +51,7 @@ public class Elements : MonoBehaviour
 
         if(results.Count > 0)
         {
-            if(ObservedSelectedObject.Reference != results[0].gameObject)
+            if(ObservedSelectedObject.GetReference() != results[0].gameObject)
             {
                 ObservedSelectedObject.SetReference(results[0].gameObject);
             }

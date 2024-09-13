@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using LitMotion;
-public class Highlighter : MonoBehaviour
+public class Highlighter : MonoBehaviour, IObserver<GameObject>
 {
     protected RectTransform rectTransform;
     [SerializeField] protected Vector2 size;
@@ -10,36 +10,48 @@ public class Highlighter : MonoBehaviour
     [SerializeField] protected Ease easing;
     protected MotionHandle positionMotionHandle;
     protected MotionHandle sizeMotionHandle;
+
+    public int OrderPriority => orderPriority;
+    public int orderPriority;
+    public ObservedGameObject ObservedSelectedObject;
+    protected virtual void OnEnable()
+    {
+        ObservedSelectedObject.RegisterObserver(this);
+    }
+    protected virtual void OnDisable()
+    {
+        ObservedSelectedObject.UnregsiterObserver(this);
+    }
     protected virtual void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        Elements.ins.RegisterSelectedObjectChangeCallback(OnSelectedObjectChanged, 0);
+        //Elements.ins.RegisterSelectedObjectChangeCallback(OnSelectedObjectChanged, 0);
     }
     protected virtual void OnDestroy()
     {
-        Elements.ins.RemoveSelectedObjectChangeCallback(OnSelectedObjectChanged, 0);
+        //Elements.ins.RemoveSelectedObjectChangeCallback(OnSelectedObjectChanged, 0);
     }
     protected virtual void Update()
     {
     }
-    protected virtual void OnSelectedObjectChanged(GameObject selectedObject)
-    {
-        RectTransform targetRect;
-        if (selectedObject.TryGetComponent(out targetRect))
-        {
-            rectTransform.SetParent(targetRect.parent);
-            //ensure we follow the selected object to where it goes
-            int newSiblingIndex = targetRect.GetSiblingIndex() - 1;
-            if (targetRect.GetSiblingIndex() == 0)
-            {
-                newSiblingIndex = 0;
-            }
-            rectTransform.SetSiblingIndex(newSiblingIndex);
-            //do the move to the new selected object
-            DoPositionMotion(targetRect);
-            DoSizeMotion(targetRect);
-        }
-    }
+    // protected virtual void OnSelectedObjectChanged(GameObject selectedObject)
+    // {
+    //     RectTransform targetRect;
+    //     if (selectedObject.TryGetComponent(out targetRect))
+    //     {
+    //         rectTransform.SetParent(targetRect.parent);
+    //         //ensure we follow the selected object to where it goes
+    //         int newSiblingIndex = targetRect.GetSiblingIndex() - 1;
+    //         if (targetRect.GetSiblingIndex() == 0)
+    //         {
+    //             newSiblingIndex = 0;
+    //         }
+    //         rectTransform.SetSiblingIndex(newSiblingIndex);
+    //         //do the move to the new selected object
+    //         DoPositionMotion(targetRect);
+    //         DoSizeMotion(targetRect);
+    //     }
+    // }
     protected virtual void DoPositionMotion(RectTransform targetRect)
     {
         if(positionMotionHandle.IsActive())
@@ -68,5 +80,24 @@ public class Highlighter : MonoBehaviour
                 rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, x.x);
                 rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, x.y);
             });
+    }
+
+    public virtual void OnSetReference(GameObject prevSelectedObject, GameObject newSelectedObject)
+    {
+        RectTransform targetRect;
+        if (newSelectedObject.TryGetComponent(out targetRect))
+        {
+            rectTransform.SetParent(targetRect.parent);
+            //ensure we follow the selected object to where it goes
+            int newSiblingIndex = targetRect.GetSiblingIndex() - 1;
+            if (targetRect.GetSiblingIndex() == 0)
+            {
+                newSiblingIndex = 0;
+            }
+            rectTransform.SetSiblingIndex(newSiblingIndex);
+            //do the move to the new selected object
+            DoPositionMotion(targetRect);
+            DoSizeMotion(targetRect);
+        }
     }
 }

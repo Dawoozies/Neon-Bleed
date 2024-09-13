@@ -28,7 +28,7 @@ public class Element : MonoBehaviour, IObserver<GameObject>
     public bool hasDelay;
     public ObservedGameObject ObservedSelectedObject;
 
-    public int OrderPriority { get => orderPriority; }
+    public int OrderPriority => orderPriority;
     public int orderPriority;
     protected virtual void OnEnable()
     {
@@ -68,7 +68,7 @@ public class Element : MonoBehaviour, IObserver<GameObject>
     protected virtual void OnAspectRatioChanged()
     {
     }
-    protected virtual void OnSelectedObjectChanged(GameObject prevSelectedObject, GameObject selectedObject)
+    public virtual void OnSetReference(GameObject prevSelectedObject, GameObject selectedObject)
     {
         if(gameObject == selectedObject)
         {
@@ -145,10 +145,5 @@ public class Element : MonoBehaviour, IObserver<GameObject>
     }
     protected virtual void TransitionToOffScreen_OnLogic(StateBase<ScreenState> state)
     {
-    }
-
-    public void OnSetReference(GameObject previousRef, GameObject newRef)
-    {
-        throw new System.NotImplementedException();
     }
 }

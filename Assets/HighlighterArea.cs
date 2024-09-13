@@ -12,13 +12,13 @@ public class HighlighterArea : Highlighter
     protected override void Start()
     {
         rectTransform = highlightObject.GetComponent<RectTransform>();
-        Elements.ins.RegisterSelectedObjectChangeCallback(OnSelectedObjectChanged, 0);
+        //Elements.ins.RegisterSelectedObjectChangeCallback(OnSelectedObjectChanged, 0);
     }
-    protected override void OnSelectedObjectChanged(GameObject selectedObject)
+    public override void OnSetReference(GameObject previousRef, GameObject newRef)
     {
         int areaObjectIsIn = 0;
         RectTransform targetRect;
-        if(selectedObject.TryGetComponent(out targetRect))
+        if(newRef.TryGetComponent(out targetRect))
         {
             Vector2 selectedObjectPos = targetRect.position;
             for (int i = 0; i < areas.Length; i++)
@@ -37,7 +37,7 @@ public class HighlighterArea : Highlighter
 
                 if(inBounds)
                 {
-                    Debug.Log($"RECT AREA {areas[i].gameObject.name} contains {selectedObject.name}");
+                    Debug.Log($"RECT AREA {areas[i].gameObject.name} contains {newRef.name}");
                     areaObjectIsIn = i;
                     if(activeArea != areaObjectIsIn)
                     {

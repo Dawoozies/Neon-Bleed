@@ -93,6 +93,8 @@ MonoBehaviour:
   size: {x: 60, y: 60}
   transitionTime: 0.05
   easing: 3
+  orderPriority: 1
+  ObservedSelectedObject: {fileID: 11400000, guid: 6f46bfe361979114ba78462f9fed9b67, type: 2}
 --- !u!114 &1754895081785221412
 MonoBehaviour:
   m_ObjectHideFlags: 0
