@@ -20,8 +20,9 @@ public class Elements : MonoBehaviour
     PointerEventData pointerEventData;
     EventSystem eventSystem;
     GameObject selectedObject;
-    public GameEvent selectedElementEvent;
     public Dictionary<int, List<Action<GameObject>>> onSelectedObjectChangedActions = new();
+
+    public ObservedGameObject ObservedSelectedObject;
     void Start()
     {
         raycaster = GetComponent<GraphicRaycaster>();
@@ -45,6 +46,14 @@ public class Elements : MonoBehaviour
                         item.Invoke(selectedObject);
                     }
                 }
+            }
+        }
+
+        if(results.Count > 0)
+        {
+            if(ObservedSelectedObject.Reference != results[0].gameObject)
+            {
+                ObservedSelectedObject.SetReference(results[0].gameObject);
             }
         }
     }

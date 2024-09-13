@@ -26,10 +26,14 @@ public class Element : MonoBehaviour
     protected StateMachine<ScreenState> screenStateMachine;
     protected MotionHandle transitionMotionHandle;
     public bool hasDelay;
+    public ObservedGameObject ObservedSelectedObject;
     protected virtual void Start()
     {
         rectTransform = GetComponent<RectTransform>();
         Elements.ins.RegisterSelectedObjectChangeCallback(OnSelectedObjectChanged, 1);
+        //intead of register selected object callback
+
+
         encapsulatingMenu = GetComponentInParent<Menu>();
         if (encapsulatingMenu != null)
             inMenu = true;
