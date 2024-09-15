@@ -21,6 +21,7 @@ public class Element : MonoBehaviour, IObserver<GameObject>
     public ScreenState startingScreenState;
     public OffScreenSide offScreenSide;
     protected Vector3 onScreenPosition;
+    protected Vector3 offScreenPosition;
     public float onScreenTransitionTime;
     public Ease onScreenTransitionEasing;
     protected StateMachine<ScreenState> screenStateMachine;
@@ -32,11 +33,13 @@ public class Element : MonoBehaviour, IObserver<GameObject>
     public int orderPriority;
     protected virtual void OnEnable()
     {
-        ObservedSelectedObject.RegisterObserver(this);
+        if(ObservedSelectedObject != null)
+            ObservedSelectedObject.RegisterObserver(this);
     }
     protected virtual void OnDisable()
     {
-        ObservedSelectedObject.UnregsiterObserver(this);
+        if (ObservedSelectedObject != null)
+            ObservedSelectedObject.UnregsiterObserver(this);
     }
     protected virtual void Start()
     {
@@ -48,7 +51,8 @@ public class Element : MonoBehaviour, IObserver<GameObject>
         if (encapsulatingMenu != null)
             inMenu = true;
         onScreenPosition = rectTransform.localPosition;
-        rectTransform.position = StaticData.ins.OffScreenPoint(rectTransform.position, offScreenSide);
+        offScreenPosition = StaticData.ins.OffScreenPointWithSizeShift(rectTransform, offScreenSide);
+        rectTransform.localPosition = offScreenPosition;
         screenStateMachine = new StateMachine<ScreenState>();
         screenStateMachine.AddState(ScreenState.OffScreen, OffScreen_OnEnter, OffScreen_OnLogic);
         screenStateMachine.AddState(ScreenState.TransitionToOnScreen, TransitionToOnScreen_OnEnter, TransitionToOnScreen_OnLogic);
@@ -114,13 +118,13 @@ public class Element : MonoBehaviour, IObserver<GameObject>
         //start transition
         if(!hasDelay)
         {
-            transitionMotionHandle = LMotion.Create(StaticData.ins.OffScreenPoint(rectTransform.localPosition, offScreenSide), onScreenPosition, onScreenTransitionTime)
+            transitionMotionHandle = LMotion.Create(offScreenPosition, onScreenPosition, onScreenTransitionTime)
                 .WithEase(onScreenTransitionEasing)
                 .Bind(x => rectTransform.localPosition = x);
         }
         else
         {
-            transitionMotionHandle = LMotion.Create(StaticData.ins.OffScreenPoint(rectTransform.localPosition, offScreenSide), onScreenPosition, onScreenTransitionTime)
+            transitionMotionHandle = LMotion.Create(offScreenPosition, onScreenPosition, onScreenTransitionTime)
                 .WithEase(onScreenTransitionEasing)
                 .WithDelay(StaticData.ins.GetDelay(rectTransform.localPosition, offScreenSide))
                 .Bind(x => rectTransform.localPosition = x);

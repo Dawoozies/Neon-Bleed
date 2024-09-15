@@ -51,6 +51,34 @@ public class StaticData : MonoBehaviour
         }
         return Vector3.Lerp(points[0].position, points[1].position, lerpParameter);
     }
+    public Vector3 OffScreenPointWithSizeShift(RectTransform elementRectTransform, OffScreenSide offScreenSide)
+    {
+        Vector3 elementPos = elementRectTransform.localPosition;
+        Vector3 elementShift = Vector3.zero;
+        switch (offScreenSide)
+        {
+            case OffScreenSide.Left:
+                //only need to shift by width
+                elementShift = Vector3.left;
+                break;
+            case OffScreenSide.Right:
+                //only need to shift by width
+                elementShift = Vector3.right;
+                break;
+            case OffScreenSide.Top:
+                //only need to shift by height
+                elementShift = Vector3.up;
+                break;
+            case OffScreenSide.Bottom:
+                //only need to shift by height
+                elementShift = Vector3.down;
+                break;
+            default:
+                break;
+        }
+        elementShift.Scale(elementRectTransform.sizeDelta/2f);
+        return OffScreenPoint(elementPos, offScreenSide) + elementShift;
+    }
     public float GetDelay(Vector3 elementPos, OffScreenSide offScreenSide)
     {
         Transform[] points = new Transform[2];
