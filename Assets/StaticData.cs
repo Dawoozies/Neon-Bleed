@@ -8,6 +8,7 @@ public class StaticData : MonoBehaviour
     {
         ins = this;
     }
+    public ObservedColorPalette ObservedActiveColorPalette;
     public ColorPalette ActiveColorPalette;
     [ReorderableList]
     public OffScreenLine[] OffScreenLines;
@@ -17,6 +18,10 @@ public class StaticData : MonoBehaviour
     public float CurrentDelayDelta;
     void Update()
     {
+        if (ObservedActiveColorPalette.GetReference() != ActiveColorPalette)
+        {
+            ObservedActiveColorPalette.SetReference(ActiveColorPalette);
+        }
         for (int i = 0; i < OffScreenCorners.Length; i++)
         {
             OffScreenLineRenderer.SetPosition(i, OffScreenCorners[i].position);
