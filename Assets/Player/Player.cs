@@ -7,7 +7,10 @@ public class Player : ScriptableObject
     //health
     //action points
     //stamina
-    //OBSERVABLE skills
-    //OBSERVABLE player active buffs
-    //rings equipped
+    //skills
+    //player active buffs
+    //equipment
+    public int health;
+    public int actionPoints;
+    public int stamina;
 }
