@@ -6,24 +6,47 @@ using UnityEngine;
 [CreateAssetMenu]
 public class TextStyle : ScriptableObject
 {
-    public TMP_StyleSheet styleSheet;
+    public bool hasBeenModified;
     public int hash;
-    [SerializeField] int paletteIndex = -1; //-1 == dont use palette
+    public int paletteIndex = -1; //-1 == dont use palette
     [SerializeField] Color color;
     string[] colorTag = new string[2];
     [SerializeField] bool isBold;
     string[] boldTag = new string[2];
-    public void UpdateTextStyle()
+
+    MotionHandle colorMotionHandle;
+    public ColorPaletteMotionData motionData;
+    public void SetColor(Color value)
     {
+        if (colorMotionHandle.IsActive())
+            colorMotionHandle.Cancel();
+
+        DoColorMotion(value);
+    }
+    public void UpdateTextStyleTags()
+    {
+        if(!hasBeenModified)
+        {
+            return;
+        }
         colorTag[0] = $"<color={ColorUtility.ToHtmlStringRGBA(color)}>";
         colorTag[1] = "</color>";
 
         boldTag[0] = isBold ? "<b>" : "";
         boldTag[1] = isBold ? "</b>" : "";
+
+        hasBeenModified = false;
     }
-    void DoColorMotion()
+    void DoColorMotion(Color value)
     {
-        Color targetColor = color;
+        LMotion.Create(color, value, motionData.transitionTime)
+            .WithDelay(motionData.delay)
+            .WithEase(motionData.easing)
+            .Bind(x =>
+            {
+                color = x;
+                hasBeenModified = true;
+            });
     }
     public string GetOpeningTextStyleTags()
     {
