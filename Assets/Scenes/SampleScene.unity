@@ -1755,7 +1755,6 @@ RectTransform:
   - {fileID: 932083783}
   - {fileID: 1344675714}
   - {fileID: 569549350}
-  - {fileID: 936849506}
   - {fileID: 2067684638}
   - {fileID: 102513266}
   m_Father: {fileID: 879996388}
@@ -3156,7 +3155,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 765146256}
+    m_TransformParent: {fileID: 1791569992}
     m_Modifications:
     - target: {fileID: 1072717245447660662, guid: 41641bd78b6d2d549a4369fd057c0231, type: 3}
       propertyPath: offScreenSide
@@ -3747,6 +3746,7 @@ RectTransform:
   - {fileID: 595485331}
   - {fileID: 600415261}
   - {fileID: 1616555813}
+  - {fileID: 936849506}
   - {fileID: 879996388}
   - {fileID: 448183437}
   - {fileID: 1886939210}
