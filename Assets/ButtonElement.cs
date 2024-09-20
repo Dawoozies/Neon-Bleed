@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using LitMotion;
+using TMPro;
+using UnityEngine.Events;
 public class ButtonElement : Element
 {
     Vector2 startingSize;
@@ -11,6 +13,11 @@ public class ButtonElement : Element
     public Ease easing;
     protected MotionHandle[] onEnterMotionHandles;
     protected MotionHandle[] onExitMotionHandles;
+
+    bool mouseOver;
+    public TextMeshProUGUI mouseOverDebug;
+    string mouseClickDebug;
+    public UnityEvent<int> onMouseClickedElement;
     protected override void Start()
     {
         base.Start();
@@ -20,6 +27,9 @@ public class ButtonElement : Element
     }
     protected override void OnMouseOverEnter()
     {
+        if (screenState != ScreenState.OnScreen)
+            return;
+
         base.OnMouseOverEnter();
         if(inMenu)
         {
@@ -44,9 +54,14 @@ public class ButtonElement : Element
             rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, x.y);
         }
         );
+
+        mouseOver = true;
     }
     protected override void OnMouseOverExit()
     {
+        if (screenState != ScreenState.OnScreen)
+            return;
+
         base.OnMouseOverExit();
         if (inMenu)
         {
@@ -71,5 +86,25 @@ public class ButtonElement : Element
             rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, x.y);
         }
         );
+
+        mouseOver = false;
+    }
+    protected override void Update()
+    {
+        base.Update();
+        if(Input.GetMouseButtonDown(0))
+        {
+            if(mouseOver)
+            {
+                mouseClickDebug = "Mouse Clicked";
+                onMouseClickedElement?.Invoke(transform.GetSiblingIndex());
+            }
+            else
+            {
+                mouseClickDebug = "";
+            }
+        }
+        mouseOverDebug.text = mouseOver ? $"SCREEN STATE = {screenState}" + "\nMOUSE OVER" : $"SCREEN STATE = {screenState}" + "\nMOUSE NOT OVER";
+        mouseOverDebug.text += "\n" + mouseClickDebug;
     }
 }

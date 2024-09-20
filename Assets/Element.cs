@@ -120,12 +120,14 @@ public class Element : MonoBehaviour, IObserver<GameObject>
         {
             transitionMotionHandle = LMotion.Create(offScreenPosition, onScreenPosition, onScreenTransitionTime)
                 .WithEase(onScreenTransitionEasing)
+                .WithOnComplete(() => screenStateMachine.RequestStateChange(ScreenState.OnScreen))
                 .Bind(x => rectTransform.localPosition = x);
         }
         else
         {
             transitionMotionHandle = LMotion.Create(offScreenPosition, onScreenPosition, onScreenTransitionTime)
                 .WithEase(onScreenTransitionEasing)
+                .WithOnComplete(() => screenStateMachine.RequestStateChange(ScreenState.OnScreen))
                 .WithDelay(StaticData.ins.GetDelay(rectTransform.localPosition, offScreenSide))
                 .Bind(x => rectTransform.localPosition = x);
         }
@@ -133,10 +135,7 @@ public class Element : MonoBehaviour, IObserver<GameObject>
     protected virtual void TransitionToOnScreen_OnLogic(StateBase<ScreenState> state)
     {
         //update transition
-        if(!transitionMotionHandle.IsActive())
-        {
-            screenStateMachine.RequestStateChange(ScreenState.OnScreen);
-        }
+        screenStateMachine.RequestStateChange(ScreenState.OnScreen);
     }
     protected virtual void OnScreen_OnEnter(StateBase<ScreenState> state)
     {

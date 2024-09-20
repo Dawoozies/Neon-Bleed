@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e51b142f46a01240898704bad543f7d, type: 3}
-  m_Name: StartArea
+  m_Script: {fileID: 11500000, guid: 11365b3a0d9bfd541b267a68ad7f7ffc, type: 3}
+  m_Name: TabsTest
   m_EditorClassIdentifier: 
-  locationName: CAVE
-  locationDescription: You are in a dark cave.
