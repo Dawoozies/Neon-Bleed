@@ -17,7 +17,7 @@ public class ButtonElement : Element
     bool mouseOver;
     public TextMeshProUGUI mouseOverDebug;
     string mouseClickDebug;
-    public UnityEvent<int> onMouseClickedElement;
+    public UnityEvent<Transform> onMouseClickedElement;
     protected override void Start()
     {
         base.Start();
@@ -97,7 +97,7 @@ public class ButtonElement : Element
             if(mouseOver)
             {
                 mouseClickDebug = "Mouse Clicked";
-                onMouseClickedElement?.Invoke(transform.GetSiblingIndex());
+                onMouseClickedElement?.Invoke(transform);
             }
             else
             {
