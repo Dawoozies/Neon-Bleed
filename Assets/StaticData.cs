@@ -8,6 +8,7 @@ public class StaticData : MonoBehaviour
     {
         ins = this;
     }
+    public RectTransform canvas;
     public ObservedColorPalette ObservedActiveColorPalette;
     public ColorPalette ActiveColorPalette;
     [ReorderableList]
@@ -83,6 +84,28 @@ public class StaticData : MonoBehaviour
         }
         elementShift.Scale(elementRectTransform.sizeDelta/2f);
         return OffScreenPoint(elementPos, offScreenSide) + elementShift;
+    }
+    public Vector3 OffScreenPoint(RectTransform elementRectTransform, OffScreenSide side)
+    {
+        Vector3 elementPos = elementRectTransform.localPosition;
+        Vector3 elementShift = Vector3.zero;
+        float multiplier = 1f;
+        switch (side)
+        {
+            case OffScreenSide.Left:
+                elementShift = Vector3.left * (canvas.rect.size.x * multiplier);
+                break;
+            case OffScreenSide.Right:
+                elementShift = Vector3.right * (canvas.rect.size.x * multiplier);
+                break;
+            case OffScreenSide.Top:
+                elementShift = Vector3.up * (canvas.rect.size.y * multiplier);
+                break;
+            case OffScreenSide.Bottom:
+                elementShift = Vector3.down * (canvas.rect.size.y * multiplier);
+                break;
+        }
+        return elementPos + elementShift;
     }
     public float GetDelay(Vector3 elementPos, OffScreenSide offScreenSide)
     {

@@ -54,6 +54,7 @@ public class ScrollingImages : MonoBehaviour
         GameObject newObject = SharedGameObjectPool.Rent(prefab);
         RectTransform newRectTransform = newObject.GetComponent<RectTransform>();
         newRectTransform.SetParent(rectTransform);
+        newRectTransform.localScale = Vector3.one;
 
         ScrollingObject newScrollingObject = new ScrollingObject();
         newScrollingObject.rectTransform = newRectTransform;

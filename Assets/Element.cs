@@ -51,7 +51,7 @@ public class Element : MonoBehaviour, IObserver<GameObject>
         if (encapsulatingMenu != null)
             inMenu = true;
         onScreenPosition = rectTransform.localPosition;
-        offScreenPosition = StaticData.ins.OffScreenPointWithSizeShift(rectTransform, offScreenSide);
+        offScreenPosition = StaticData.ins.OffScreenPoint(rectTransform, offScreenSide);
         rectTransform.localPosition = offScreenPosition;
         screenStateMachine = new StateMachine<ScreenState>();
         screenStateMachine.AddState(ScreenState.OffScreen, OffScreen_OnEnter, OffScreen_OnLogic);
@@ -128,7 +128,7 @@ public class Element : MonoBehaviour, IObserver<GameObject>
             transitionMotionHandle = LMotion.Create(offScreenPosition, onScreenPosition, onScreenTransitionTime)
                 .WithEase(onScreenTransitionEasing)
                 .WithOnComplete(() => screenStateMachine.RequestStateChange(ScreenState.OnScreen))
-                .WithDelay(StaticData.ins.GetDelay(rectTransform.localPosition, offScreenSide))
+                .WithDelay(StaticData.ins.GetDelay(rectTransform.position, offScreenSide))
                 .Bind(x => rectTransform.localPosition = x);
         }
     }
