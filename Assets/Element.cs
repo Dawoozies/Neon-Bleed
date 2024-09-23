@@ -58,6 +58,18 @@ public class Element : MonoBehaviour, IObserver<GameObject>
         screenStateMachine.AddState(ScreenState.TransitionToOnScreen, TransitionToOnScreen_OnEnter, TransitionToOnScreen_OnLogic);
         screenStateMachine.AddState(ScreenState.OnScreen, OnScreen_OnEnter, OnScreen_OnLogic);
         screenStateMachine.AddState(ScreenState.TransitionToOffScreen, TransitionToOffScreen_OnEnter, TransitionToOffScreen_OnLogic);
+
+        if(inMenu)
+        {
+            screenStateMachine.AddTransition(ScreenState.OnScreen, ScreenState.TransitionToOffScreen, 
+                transition => 
+                {
+                    return !encapsulatingMenu.menuActive;
+                }
+            );
+        }
+
+
         screenStateMachine.SetStartState(startingScreenState);
         screenStateMachine.Init();
     }
