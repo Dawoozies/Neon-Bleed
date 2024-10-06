@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCharacter : MonoBehaviour
 {
-    public Vector2 input;
+    public Vector2 horizontalInput;
     public float jumpInput;
     public Vector2 gravity;
     public float maxAirTime;
@@ -16,7 +16,7 @@ public class PlayerCharacter : MonoBehaviour
     }
     private void Update()
     {
-        input = new Vector2(Input.GetAxis("Horizontal"), 0f);
+        horizontalInput = new Vector2(Input.GetAxis("Horizontal"), 0f);
         if( Input.GetButton("Jump"))
         {
             jumpInput = 1f;
@@ -28,5 +28,9 @@ public class PlayerCharacter : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if(jumpInput > 0)
+        {
+
+        }
     }
 }
