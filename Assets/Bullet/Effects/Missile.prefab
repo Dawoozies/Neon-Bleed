@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4293775817502993667}
   - component: {fileID: 7405743037858961704}
   - component: {fileID: 3606376739769404030}
+  - component: {fileID: 3426521772030646076}
   m_Layer: 0
   m_Name: Missile
   m_TagString: Untagged
@@ -118,9 +119,9 @@ MonoBehaviour:
   onCastCollision:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ParticleBurst, Assembly-CSharp
-        m_MethodName: Burst
+      - m_Target: {fileID: 3426521772030646076}
+        m_TargetAssemblyTypeName: ExternalEffectPlay, Assembly-CSharp
+        m_MethodName: PlayEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -198,6 +199,19 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3426521772030646076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4412441324533048616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42f6adb32e7c0444a8c8e0b4c6d1596, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectIndex: 0
 --- !u!1 &4709906464854105443
 GameObject:
   m_ObjectHideFlags: 0

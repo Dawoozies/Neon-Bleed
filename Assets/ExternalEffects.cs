@@ -11,11 +11,11 @@ public class ExternalEffects : MonoBehaviour
         ins = this;
         particleSystems = GetComponentsInChildren<ParticleSystem>();
     }
-    public void PlayEffect(int effectIndex)
+    public void PlayEffect(int effectIndex, Vector3 pos)
     {
         if (effectIndex >= particleSystems.Length)
             return;
+        particleSystems[effectIndex].transform.position = pos;
         particleSystems[effectIndex].Play();
     }
-
 }
