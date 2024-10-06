@@ -54,5 +54,7 @@ public class LaserEffect : MonoBehaviour
         LMotion.Punch.Create(0, maxParticles, laserPunchTime)
             .WithEase(laserWidthEasing)
             .Bind(x => main.maxParticles = Mathf.FloorToInt(x));
+
+        CameraControl.ins.CameraShakeAddAmplitude(laserPunchStrength);
     }
 }
