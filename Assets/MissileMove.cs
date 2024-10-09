@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using uPools;
 
-public class MissileMove : PhysMovement
+public class MissileMove : PhysMovement, IPoolCallbackReceiver
 {
     public Transform target;
     public SpriteRenderer missileGraphic;
@@ -49,5 +50,14 @@ public class MissileMove : PhysMovement
             transform.right = dirToTarget;
             rb.velocity = dirToTarget.normalized * launchSpeed;
         }
+    }
+
+    public void OnRent()
+    {
+        randomFloatDir = Random.insideUnitCircle;
+        missileAimTime = missileAimTimeMax;
+    }
+    public void OnReturn()
+    {
     }
 }

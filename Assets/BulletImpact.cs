@@ -1,13 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using uPools;
 
 public class BulletImpact : MonoBehaviour
 {
     public float damage;
-    public virtual void Impact()
+    public virtual void Impact(Vector3 hitVelocity, RaycastHit2D[] results)
     {
-        ExternalEffects.ins.PlayEffect(1, transform.position);
-        Destroy(gameObject);
+        if(results.Length > 0)
+        {
+            foreach (RaycastHit2D result in results)
+            {
+                BloodManager bloodManager;
+                if(result.collider.gameObject.TryGetComponent(out bloodManager))
+                {
+                    bloodManager.IncreaseBleedIntensity(damage);
+                }
+            }
+        }
+        SharedGameObjectPool.Return(gameObject);
     }
 }

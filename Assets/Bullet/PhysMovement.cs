@@ -38,3 +38,7 @@ public class PhysMovement : MonoBehaviour
         Move();
     }
 }
+public interface IShoot
+{
+    public void SetVelocity(Vector2 v);
+}

@@ -18,4 +18,11 @@ public class ExternalEffects : MonoBehaviour
         particleSystems[effectIndex].transform.position = pos;
         particleSystems[effectIndex].Play();
     }
+    public void EmitAtPosition(int effectIndex, Vector3 pos, int toEmit)
+    {
+        if (effectIndex >= particleSystems.Length)
+            return;
+        particleSystems[effectIndex].transform.position = pos;
+        particleSystems[effectIndex].Emit(toEmit);
+    }
 }

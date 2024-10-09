@@ -14,6 +14,7 @@ public class LaserEffect : MonoBehaviour
     public float laserPunchStrength;
     public Ease laserWidthEasing;
     public bool fireLaserDebug;
+    MotionHandle laserMotionHandle;
     private void Start()
     {
         lineRenderer = GetComponentInChildren<LineRenderer>();
@@ -42,9 +43,9 @@ public class LaserEffect : MonoBehaviour
 
         ps.transform.position = points[points.Length - 1].position;
     }
-    void Fire()
+    public void Fire()
     {
-        LMotion.Punch.Create(0f, laserPunchStrength, laserPunchTime)
+        laserMotionHandle = LMotion.Punch.Create(0f, laserPunchStrength, laserPunchTime)
             .WithEase(laserWidthEasing)
             .Bind(x => {
                 lineRenderer.startWidth = x;
@@ -56,5 +57,9 @@ public class LaserEffect : MonoBehaviour
             .Bind(x => main.maxParticles = Mathf.FloorToInt(x));
 
         CameraControl.ins.CameraShakeAddAmplitude(laserPunchStrength);
+    }
+    public bool IsFiring()
+    {
+        return laserMotionHandle.IsActive() && lineRenderer.startWidth > 0.01f;
     }
 }

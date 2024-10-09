@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - AngelBlood
   layers:
   - Default
   - TransparentFX
@@ -13,10 +14,10 @@ TagManager:
   - UI
   - Barrier
   - Ground
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Angel
+  - AngelBlood
+  - BloodConverter
   - 
   - 
   - 
