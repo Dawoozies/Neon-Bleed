@@ -6,6 +6,7 @@ public class BounceMove : PhysMovement
 {
     public Vector2 initialVelocity;
     public float bounceFactor;
+    public Vector2 randomSpeedBounds;
     protected override void Start()
     {
         base.Start();
@@ -24,5 +25,10 @@ public class BounceMove : PhysMovement
         }
         rb.position = results[resultIndex].centroid;
         rb.velocity = Vector2.Reflect(hitVelocity * bounceFactor, results[resultIndex].normal);
+    }
+
+    public void OnDisable()
+    {
+        initialVelocity = Random.insideUnitCircle * Random.Range(randomSpeedBounds.x, randomSpeedBounds.y);
     }
 }

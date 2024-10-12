@@ -22,6 +22,9 @@ public class LaserEffect : MonoBehaviour
         lineRenderer.endWidth = 0f;
         ps = GetComponentInChildren<ParticleSystem>();
         main = ps.main;
+
+        points[0].parent = null;
+        points[1].parent = null;
     }
     private void Update()
     {

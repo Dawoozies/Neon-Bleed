@@ -2,14 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using uPools;
 
-public class BloodManager : MonoBehaviour
+public class BloodManager : MonoBehaviour, IPoolCallbackReceiver
 {
-    public float blood;
+    public float bloodMax;
+    float blood;
     public float bleedIntensity;
-    public float bleedParticleMax;
+    public float bleedIntensityMultiplier;
     public ParticleSystem bleedParticleSystem;
     public UnityEvent onBloodDepleted;
+    void Start()
+    {
+        blood = bloodMax;
+    }
     private void Update()
     {
         var emission = bleedParticleSystem.emission;
@@ -26,10 +32,18 @@ public class BloodManager : MonoBehaviour
 
             return;
         }
-        emission.rateOverTime = bleedIntensity;
+        emission.rateOverTime = bleedIntensity * bleedIntensityMultiplier;
     }
     public void IncreaseBleedIntensity(float damage)
     {
         bleedIntensity += damage;
+    }
+
+    public void OnRent()
+    {
+        blood = bloodMax;
+    }
+    public void OnReturn()
+    {
     }
 }
