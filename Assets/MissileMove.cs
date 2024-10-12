@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using uPools;
 
-public class MissileMove : PhysMovement, IPoolCallbackReceiver
+public class MissileMove : PhysMovement
 {
     public Transform target;
     public SpriteRenderer missileGraphic;
     //spin this around when firing
-    public float launchSpeed;
     public float missileAimAngularSpeed;
     public float missileAimTimeMax;
     float missileAimTime;
     public float randomFloatSpeedMax;
     public AnimationCurve aimCurve;
     Vector2 randomFloatDir;
+    bool move;
+    Vector3 velocity;
+    public float upDistance;
     protected override void Start()
     {
         base.Start();
         onCastCollision.AddListener(OnCastCollisionHandler);
-        randomFloatDir = Random.insideUnitCircle;
-        missileAimTime = missileAimTimeMax;
     }
     protected virtual void OnCastCollisionHandler(Vector3 hitVelocity, RaycastHit2D[] results)
     {
@@ -46,18 +46,14 @@ public class MissileMove : PhysMovement, IPoolCallbackReceiver
         else
         {
             rb.angularVelocity = 0f;
-            Vector3 dirToTarget = target.position - transform.position;
-            transform.right = dirToTarget;
-            rb.velocity = dirToTarget.normalized * launchSpeed;
+            rb.velocity = velocity;
+            transform.right = rb.velocity;
         }
     }
-
-    public void OnRent()
+    public override void SetVelocity(Vector3 v)
     {
-        randomFloatDir = Random.insideUnitCircle;
+        randomFloatDir = Vector3.zero;
         missileAimTime = missileAimTimeMax;
-    }
-    public void OnReturn()
-    {
+        velocity = v;
     }
 }

@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
-public class PhysMovement : MonoBehaviour
+using uPools;
+public class PhysMovement : MonoBehaviour, IPoolCallbackReceiver
 {
     //on collision check
     //virtual method for movement
@@ -37,8 +37,18 @@ public class PhysMovement : MonoBehaviour
         CastCollisionCheck();
         Move();
     }
-}
-public interface IShoot
-{
-    public void SetVelocity(Vector2 v);
+    public virtual void SetVelocity(Vector3 v)
+    {
+        rb.velocity = v;
+    }
+
+    public void OnRent()
+    {
+        if (rb == null)
+            rb = GetComponent<Rigidbody2D>();
+    }
+
+    public void OnReturn()
+    {
+    }
 }

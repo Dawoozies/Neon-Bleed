@@ -28,6 +28,7 @@ public class Projectile : MonoBehaviour
     {
         GameObject projectileClone = SharedGameObjectPool.Rent(prefab);
         projectileClone.transform.position = transform.position;
-        projectileClone.GetComponentInChildren<Rigidbody2D>().velocity = (MousePosition.ins.WorldPos - transform.position).normalized * shotSpeed;
+        projectileClone.GetComponentInChildren<PhysMovement>().SetVelocity((MousePosition.ins.WorldPos - transform.position).normalized * shotSpeed);
+        //projectileClone.GetComponentInChildren<Rigidbody2D>().velocity = (MousePosition.ins.WorldPos - transform.position).normalized * shotSpeed;
     }
 }

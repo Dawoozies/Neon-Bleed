@@ -6,6 +6,7 @@ public class AngelDeath : MonoBehaviour
 {
     bool dead;
     Rigidbody2D rb;
+    public float deathMass;
     public float deathGravity;
     public LayerMask deathExclusionLayer;
     public float deathVelocity;
@@ -21,6 +22,7 @@ public class AngelDeath : MonoBehaviour
         {
             dead = true;
             rb.bodyType = RigidbodyType2D.Dynamic;
+            rb.mass = deathMass;
             rb.velocity = Random.insideUnitCircle * deathVelocity;
             rb.gravityScale = deathGravity;
             int randomSign = Random.Range(-1, 2);
