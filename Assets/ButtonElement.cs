@@ -92,6 +92,10 @@ public class ButtonElement : Element
     protected override void Update()
     {
         base.Update();
+
+        if (mouseOverDebug == null)
+            return;
+
         if(Input.GetMouseButtonDown(0))
         {
             if(mouseOver)
