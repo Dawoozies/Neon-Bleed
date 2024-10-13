@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 public class AutoShoot : MonoBehaviour
 {
-    public GameObject bulletPrefab;
     public int bulletIndex;
     public float shotCooldown;
     float cooldown;
@@ -13,7 +12,8 @@ public class AutoShoot : MonoBehaviour
         {
             cooldown -= Time.deltaTime;
         }
-        else
+
+        if(cooldown <= 0)
         {
             cooldown = shotCooldown;
             Shoot();

@@ -12,17 +12,26 @@ public class SpiralShoot : AutoShoot
     protected override void Update()
     {
         currentAngle += angleIncreaseSpeed * Time.deltaTime;
-        if(currentAngle == 360f)
+
+        if(pingPong)
         {
-            if(pingPong)
+            if(currentAngle >= 360f || currentAngle <= 0f)
             {
                 angleIncreaseSpeed = -angleIncreaseSpeed;
             }
-            else
+        }
+        else
+        {
+            if(angleIncreaseSpeed > 0f && currentAngle >= 360f)
             {
                 currentAngle = 0f;
             }
+            if(angleIncreaseSpeed < 0f && currentAngle <= 0f)
+            {
+                currentAngle = 360f;
+            }
         }
+
         base.Update();
     }
     public override void Shoot()

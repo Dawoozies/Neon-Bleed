@@ -16955,7 +16955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angelSpawnPoint: {fileID: 1690114069}
   angelPrefab: {fileID: 3556888254987139034, guid: 0f2e6c199c4ed91409e2a93dda553116, type: 3}
-  spawnTime: 4
+  spawnTime: 8
   spawnDistance: 15
   spawnVariance: 5
 --- !u!4 &1814010508
