@@ -9,6 +9,7 @@ public class DrinkBlood : MonoBehaviour
     public int bloodCollected;
     public float drinkRadius;
     public LayerMask angelBloodMask;
+    public int particleEffectIndex;
     private void Update()
     {
         Collider2D[] toDrink = Physics2D.OverlapCircleAll(transform.position, drinkRadius, angelBloodMask);
@@ -18,6 +19,7 @@ public class DrinkBlood : MonoBehaviour
             {
                 bloodCollected++;
                 SharedGameObjectPool.Return(blood.gameObject);
+                ExternalEffects.ins.PlayEffect(particleEffectIndex, transform.position);
             }
         }
     }
