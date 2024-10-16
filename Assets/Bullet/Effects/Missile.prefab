@@ -157,8 +157,8 @@ MonoBehaviour:
         m_CallState: 2
   target: {fileID: 0}
   missileGraphic: {fileID: 6859865439148041989}
-  missileAimAngularSpeed: 3000
-  missileAimTimeMax: 0.6
+  missileAimAngularSpeed: 2000
+  missileAimTimeMax: 0.8
   randomFloatSpeedMax: 10
   aimCurve:
     serializedVersion: 2
@@ -184,7 +184,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  upDistance: 15
+  upMoveSpeed: 5
 --- !u!114 &3606376739769404030
 MonoBehaviour:
   m_ObjectHideFlags: 0

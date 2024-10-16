@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class BloodManager : MonoBehaviour, IPoolCallbackReceiver
     public float bleedIntensityMultiplier;
     public ParticleSystem bleedParticleSystem;
     public UnityEvent onBloodDepleted;
+    List<Action<BloodManager>> onBloodDepletedCallbacks = new();
     void Start()
     {
         blood = bloodMax;
@@ -30,6 +32,12 @@ public class BloodManager : MonoBehaviour, IPoolCallbackReceiver
 
             onBloodDepleted?.Invoke();
 
+            foreach (Action<BloodManager> callback in onBloodDepletedCallbacks)
+            {
+                callback.Invoke(this);
+            }
+            onBloodDepletedCallbacks.Clear();
+
             return;
         }
         emission.rateOverTime = bleedIntensity * bleedIntensityMultiplier;
@@ -45,5 +53,9 @@ public class BloodManager : MonoBehaviour, IPoolCallbackReceiver
     }
     public void OnReturn()
     {
+    }
+    public void RegisterOnBloodDepletedCallback(Action<BloodManager> a)
+    {
+        onBloodDepletedCallbacks.Add(a);
     }
 }

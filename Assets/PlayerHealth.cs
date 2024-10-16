@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,5 +33,19 @@ public class PlayerHealth : MonoBehaviour
         {
             onPlayerDead?.Invoke();
         }
+    }
+    public void RestoreAllShields()
+    {
+        float healthPerShield = (float)defaultMaxHealthValue / (float)defaultShieldValue;
+        int shieldsRestored = 0;
+        for (int i = 0; i < defaultShieldValue; i++)
+        {
+            if(ObservedPlayerHealth.GetReference() >= (float)i * healthPerShield)
+            {
+                //we can restore this shield
+                shieldsRestored++;
+            }
+        }
+        ObservedPlayerBloodShield.SetReference(shieldsRestored);
     }
 }

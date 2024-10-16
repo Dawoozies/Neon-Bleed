@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.Events;
 public class Laser : MonoBehaviour
 {
+    public ObservedFloat LaserCooldown;
+    public float minCooldown;
     LaserEffect laserEffect;
     public UnityEvent onShoot;
     public UnityEvent<RaycastHit2D[]> onHit;
-    public float cooldownTime;
+    public float cooldownTimeBase;
     float cooldownTimer;
     public LayerMask laserHitMask;
     public LayerMask laserStopMask;
@@ -18,6 +20,7 @@ public class Laser : MonoBehaviour
     private void Start()
     {
         laserEffect = GetComponentInChildren<LaserEffect>();
+        LaserCooldown.SetReference(cooldownTimeBase);
     }
     private void Update()
     {
@@ -44,7 +47,7 @@ public class Laser : MonoBehaviour
 
         if (Input.GetMouseButton(0) && cooldownTimer <= 0)
         {
-            cooldownTimer = cooldownTime;
+            cooldownTimer = LaserCooldown.GetReference();
             onShoot?.Invoke();
         }
 

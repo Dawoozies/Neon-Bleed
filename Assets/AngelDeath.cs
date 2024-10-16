@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using uPools;
 
 public class AngelDeath : MonoBehaviour
 {
@@ -39,7 +40,7 @@ public class AngelDeath : MonoBehaviour
     {
         if(transform.position.y < yValueDestroy)
         {
-            Destroy(gameObject);
+            SharedGameObjectPool.Return(gameObject);
         }
     }
 }

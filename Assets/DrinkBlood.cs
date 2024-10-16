@@ -2,14 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Events;
 using uPools;
 
 public class DrinkBlood : MonoBehaviour
 {
-    public int bloodCollected;
+    public ObservedInt PlayerMaxBloodRequired;
+    public ObservedInt PlayerBloodCollected;
+    public ObservedInt PlayerSoulPower;
+    public int bloodRequiredForLevelUp;
+    public int bloodRequiredIncreasePerLevel;
     public float drinkRadius;
     public LayerMask angelBloodMask;
     public int particleEffectIndex;
+    public UnityEvent onPlayerLevelUp;
+    private void Start()
+    {
+        PlayerMaxBloodRequired.SetReference(bloodRequiredForLevelUp);
+        PlayerBloodCollected.SetReference(0);
+    }
     private void Update()
     {
         Collider2D[] toDrink = Physics2D.OverlapCircleAll(transform.position, drinkRadius, angelBloodMask);
@@ -17,9 +28,17 @@ public class DrinkBlood : MonoBehaviour
         {
             foreach (Collider2D blood in toDrink)
             {
-                bloodCollected++;
+                PlayerBloodCollected.Increment();
                 SharedGameObjectPool.Return(blood.gameObject);
                 ExternalEffects.ins.PlayEffect(particleEffectIndex, transform.position);
+
+                if(PlayerBloodCollected.GetReference() >= PlayerMaxBloodRequired.GetReference())
+                {
+                    onPlayerLevelUp?.Invoke();
+                    PlayerBloodCollected.SetReference(0);
+                    PlayerSoulPower.Increment();
+                    PlayerMaxBloodRequired.SetReference(bloodRequiredForLevelUp + PlayerSoulPower.GetReference() * bloodRequiredIncreasePerLevel);
+                }
             }
         }
     }

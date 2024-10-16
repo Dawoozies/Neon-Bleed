@@ -5,4 +5,14 @@ using UnityEngine;
 
 public class ObservedInt : ObservedReference<int>
 {
+    public void Increment()
+    {
+        int newValue = GetReference() + 1;
+        SetReference(newValue);
+    }
+    public void Decrement()
+    {
+        int newValue = GetReference() - 1;
+        SetReference(newValue);
+    }
 }

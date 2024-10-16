@@ -4,18 +4,21 @@ using UnityEngine;
 using uPools;
 public class Projectile : MonoBehaviour
 {
+    public ObservedFloat ProjectileCooldown;
     public GameObject prefab;
-    public float cooldownTime;
+    public float minCooldown;
+    public float cooldownTimeBase;
     float cooldownTimer;
     public float shotSpeed;
     private void Start()
     {
+        ProjectileCooldown.SetReference(cooldownTimeBase);
     }
     private void Update()
     {
         if(Input.GetMouseButton(0) && cooldownTimer <= 0)
         {
-            cooldownTimer = cooldownTime;
+            cooldownTimer = ProjectileCooldown.GetReference();
             ShootProjectile();
         }
 

@@ -16,7 +16,7 @@ public class MissileMove : PhysMovement
     Vector2 randomFloatDir;
     bool move;
     Vector3 velocity;
-    public float upDistance;
+    public float upMoveSpeed;
     protected override void Start()
     {
         base.Start();
@@ -41,7 +41,7 @@ public class MissileMove : PhysMovement
         {
             missileAimTime -= Time.fixedDeltaTime;
             rb.angularVelocity = missileAimAngularSpeed * aimCurve.Evaluate(missileAimTime/missileAimTimeMax);
-            rb.velocity = randomFloatDir * randomFloatSpeedMax * aimCurve.Evaluate(missileAimTime/missileAimTimeMax);
+            rb.velocity = (randomFloatDir * randomFloatSpeedMax + Vector2.up * upMoveSpeed) * aimCurve.Evaluate(missileAimTime/missileAimTimeMax);
         }
         else
         {
@@ -52,7 +52,7 @@ public class MissileMove : PhysMovement
     }
     public override void SetVelocity(Vector3 v)
     {
-        randomFloatDir = Vector3.zero;
+        randomFloatDir = Random.insideUnitCircle;
         missileAimTime = missileAimTimeMax;
         velocity = v;
     }
