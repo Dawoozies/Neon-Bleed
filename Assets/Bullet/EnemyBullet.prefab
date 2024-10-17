@@ -4909,6 +4909,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  collisionCheckDelay: 0.01
 --- !u!50 &6605695524292994728
 Rigidbody2D:
   serializedVersion: 4

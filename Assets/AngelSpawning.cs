@@ -22,6 +22,7 @@ public class AngelSpawning : MonoBehaviour
             spawnTimer = spawnTime;
             AngelSpawn newAngel = SharedGameObjectPool.Rent(angelPrefab.GetComponent<AngelSpawn>());
             newAngel.transform.position = angelSpawnPoint.position + Vector3.up * spawnDistance + (Vector3)Random.insideUnitCircle * spawnVariance;
+            newAngel.transform.rotation = Quaternion.identity;
             newAngel.SetSpawnPosition(angelSpawnPoint.position, 0.3f);
         }
     }

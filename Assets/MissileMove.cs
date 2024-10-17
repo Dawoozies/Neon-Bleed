@@ -17,9 +17,9 @@ public class MissileMove : PhysMovement
     bool move;
     Vector3 velocity;
     public float upMoveSpeed;
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         onCastCollision.AddListener(OnCastCollisionHandler);
     }
     protected virtual void OnCastCollisionHandler(Vector3 hitVelocity, RaycastHit2D[] results)

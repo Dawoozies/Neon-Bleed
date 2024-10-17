@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using uPools;
 
-public class AngelDeath : MonoBehaviour
+public class AngelDeath : MonoBehaviour, IPoolCallbackReceiver
 {
     bool dead;
     Rigidbody2D rb;
+    float originalMass;
     public float deathMass;
+    float originalGravity;
     public float deathGravity;
+    LayerMask originalExclusionLayers;
     public LayerMask deathExclusionLayer;
     public float deathVelocity;
     public Vector2 angularSpinOnDeathBounds;
@@ -16,6 +19,9 @@ public class AngelDeath : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        originalMass = rb.mass;
+        originalGravity = rb.gravityScale;
+        originalExclusionLayers = rb.excludeLayers;
     }
     public void KillMe()
     {
@@ -42,5 +48,16 @@ public class AngelDeath : MonoBehaviour
         {
             SharedGameObjectPool.Return(gameObject);
         }
+    }
+    public void OnRent()
+    {
+    }
+    public void OnReturn()
+    {
+        dead = false;
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        rb.mass = originalMass;
+        rb.gravityScale = originalGravity;
+        rb.excludeLayers = originalExclusionLayers;
     }
 }

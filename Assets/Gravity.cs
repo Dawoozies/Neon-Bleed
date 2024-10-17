@@ -26,8 +26,9 @@ public class Gravity : PhysMovement, IVelocityComponent
             onCastCollision?.Invoke(rb.velocity, results);
         }
     }
-    protected virtual void Update()
+    public override void Update()
     {
+        base.Update();
         if (results.Length == 0)
         {
             airTime += Time.deltaTime;

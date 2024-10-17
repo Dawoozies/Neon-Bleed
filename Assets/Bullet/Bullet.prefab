@@ -207,6 +207,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  collisionCheckDelay: 0.1
 --- !u!114 &3584398003808594644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,6 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectIndex: 2
+  hitResultEmit: 0
 --- !u!114 &7635472034190761190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,6 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  damagePlayer: 0
 --- !u!1001 &7464101169524317477
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,9 +5,9 @@ using uPools;
 
 public class BulletMove : PhysMovement
 {
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         onCastCollision.AddListener(OnCastCollisionHandler);
     }
     protected virtual void OnCastCollisionHandler(Vector3 hitVelocity, RaycastHit2D[] results)

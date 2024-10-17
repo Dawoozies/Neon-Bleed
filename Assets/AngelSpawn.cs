@@ -12,6 +12,7 @@ public class AngelSpawn : MonoBehaviour
     public UnityEvent onAngelNotAtSpawnPosition;
     public UnityEvent onAngelAtSpawnPosition;
     bool spawned;
+    public float distance;
     public void SetSpawnPosition(Vector3 spawnPosition, float smoothTime)
     {
         this.spawnPosition = spawnPosition;
@@ -27,15 +28,16 @@ public class AngelSpawn : MonoBehaviour
             return;
         }
 
-
-
-        transform.position = Vector3.SmoothDamp(transform.position, spawnPosition, ref moveVelocity, smoothTime);
-
+        distance = Vector3.Distance(transform.position, spawnPosition);
         if (Vector3.Distance(transform.position, spawnPosition) <= spawnDistanceThreshold)
         {
             spawned = true;
             onAngelAtSpawnPosition?.Invoke();
             transform.position = spawnPosition;
+        }
+        else
+        {
+            transform.position = Vector3.SmoothDamp(transform.position, spawnPosition, ref moveVelocity, smoothTime);
         }
     }
 }

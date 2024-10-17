@@ -30,13 +30,15 @@ public class BloodManager : MonoBehaviour, IPoolCallbackReceiver
             blood = 0f;
             emission.rateOverTime = 0f;
 
-            onBloodDepleted?.Invoke();
-
             foreach (Action<BloodManager> callback in onBloodDepletedCallbacks)
             {
                 callback.Invoke(this);
             }
             onBloodDepletedCallbacks.Clear();
+
+            onBloodDepleted?.Invoke();
+
+
 
             return;
         }
@@ -46,16 +48,18 @@ public class BloodManager : MonoBehaviour, IPoolCallbackReceiver
     {
         bleedIntensity += damage;
     }
-
-    public void OnRent()
-    {
-        blood = bloodMax;
-    }
-    public void OnReturn()
-    {
-    }
     public void RegisterOnBloodDepletedCallback(Action<BloodManager> a)
     {
         onBloodDepletedCallbacks.Add(a);
+    }
+
+    public void OnRent()
+    {
+    }
+
+    public void OnReturn()
+    {
+        blood = bloodMax;
+        bleedIntensity = 0f;
     }
 }

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using uPools;
 
-public class AngelColorEffect : MonoBehaviour
+public class AngelColorEffect : MonoBehaviour, IPoolCallbackReceiver
 {
     public Gradient angelGradient;
     float gradientTime;
@@ -36,5 +37,13 @@ public class AngelColorEffect : MonoBehaviour
             dead = true;
             spriteRenderer.color *= deathMultiplier;
         }
+    }
+
+    public void OnRent()
+    {
+    }
+    public void OnReturn()
+    {
+        dead = false;
     }
 }

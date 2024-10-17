@@ -5173,7 +5173,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3556888254987139034}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25f274ce9e2d3364a88bb684abb07d4e, type: 3}
   m_Name: 
@@ -5184,6 +5184,7 @@ MonoBehaviour:
   onCastCollision:
     m_PersistentCalls:
       m_Calls: []
+  collisionCheckDelay: 0
   initialVelocity: {x: 20, y: 0}
   bounceFactor: 1
   randomSpeedBounds: {x: 10, y: 40}

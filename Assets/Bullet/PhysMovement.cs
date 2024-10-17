@@ -13,6 +13,8 @@ public class PhysMovement : MonoBehaviour, IPoolCallbackReceiver
     public LayerMask onCastCollisionLayerMask;
     public UnityEvent<Vector3, RaycastHit2D[]> onCastCollision;
     protected RaycastHit2D[] results;
+    public float collisionCheckDelay;
+    float collisionCheckDelayTimer;
     protected virtual void Move()
     {
         //code for moving here
@@ -27,14 +29,17 @@ public class PhysMovement : MonoBehaviour, IPoolCallbackReceiver
             onCastCollision?.Invoke(rb.velocity, results);
         }
     }
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         circleCollider = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
     }
     protected virtual void FixedUpdate()
     {
-        CastCollisionCheck();
+        if(collisionCheckDelayTimer <= 0)
+        {
+            CastCollisionCheck();
+        }
         Move();
     }
     public virtual void SetVelocity(Vector3 v)
@@ -42,13 +47,18 @@ public class PhysMovement : MonoBehaviour, IPoolCallbackReceiver
         rb.velocity = v;
     }
 
-    public void OnRent()
+    public virtual void OnRent()
     {
-        if (rb == null)
-            rb = GetComponent<Rigidbody2D>();
+        collisionCheckDelayTimer = collisionCheckDelay;
     }
-
-    public void OnReturn()
+    public virtual void OnReturn()
     {
+    }
+    public virtual void Update()
+    {
+        if(collisionCheckDelayTimer > 0)
+        {
+            collisionCheckDelayTimer -= Time.deltaTime;
+        }
     }
 }
