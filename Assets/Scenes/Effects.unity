@@ -21762,9 +21762,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318a4f370a0b0e64b8a16f24c92b3aa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultLayer: 9
   angelSpawnPoint: {fileID: 1690114069}
   angelPrefab: {fileID: 3556888254987139034, guid: 0f2e6c199c4ed91409e2a93dda553116, type: 3}
-  spawnTime: 1000
+  spawnTime: 3
   spawnDistance: 15
   spawnVariance: 5
 --- !u!4 &1814010508

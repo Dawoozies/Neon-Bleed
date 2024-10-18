@@ -5,6 +5,8 @@ using UnityEngine.Events;
 using uPools;
 public class NestAttachImpact : MonoBehaviour
 {
+    public GameObject nestInhabitantPrefab;
+    public int amountToSpawn;
     public float damage;
     public float damageTime;
     BloodManager attachedBloodManager;
@@ -39,6 +41,9 @@ public class NestAttachImpact : MonoBehaviour
         attached = false;
         transform.parent = null;
         onDetached?.Invoke();
+
+        SpawnInhabitants();
+
         SharedGameObjectPool.Return(gameObject);
     }
     public virtual void Update()
@@ -60,5 +65,14 @@ public class NestAttachImpact : MonoBehaviour
     public virtual void DealDamage()
     {
         attachedBloodManager.IncreaseBleedIntensity(damage);
+    }
+    public virtual void SpawnInhabitants()
+    {
+        for (int i = 0; i < amountToSpawn; i++)
+        {
+            GameObject newSpawn = SharedGameObjectPool.Rent(nestInhabitantPrefab);
+            newSpawn.transform.position = transform.position;
+            newSpawn.transform.right = Random.insideUnitCircle;
+        }
     }
 }

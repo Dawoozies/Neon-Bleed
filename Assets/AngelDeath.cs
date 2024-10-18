@@ -16,6 +16,7 @@ public class AngelDeath : MonoBehaviour, IPoolCallbackReceiver
     public float deathVelocity;
     public Vector2 angularSpinOnDeathBounds;
     public float yValueDestroy;
+    [Layer] public int deathLayer;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -40,6 +41,7 @@ public class AngelDeath : MonoBehaviour, IPoolCallbackReceiver
             }
             rb.angularVelocity = randomAngularSpin;
             rb.excludeLayers = deathExclusionLayer;
+            gameObject.layer = deathLayer;
         }
     }
     private void Update()

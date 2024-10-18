@@ -220,6 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 944b571f9c5a27d4aa930b48564caae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nestInhabitantPrefab: {fileID: 4870379350362551968, guid: a8a4a7229460b6842807730503ddfe8e, type: 3}
+  amountToSpawn: 10
   damage: 5
   damageTime: 0.5
   onAttached:
@@ -237,6 +239,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6320696451963206961}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDetached:
     m_PersistentCalls:
       m_Calls:
@@ -244,6 +258,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6320696451963206961}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1020,6 +1046,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b33dfb37a8aea6348a66d03b261b5b04, type: 3}
+--- !u!198 &6320696451963206961 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7236618091232337341, guid: b33dfb37a8aea6348a66d03b261b5b04, type: 3}
+  m_PrefabInstance: {fileID: 3736367282491170956}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7769309297802129458 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6343354829001560254, guid: b33dfb37a8aea6348a66d03b261b5b04, type: 3}
