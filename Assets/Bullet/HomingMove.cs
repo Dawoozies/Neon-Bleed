@@ -72,4 +72,10 @@ public class HomingMove : PhysMovement, IVelocityComponent
         target = null;
         targetDetected = false;
     }
+    public override void SetVelocity(Vector3 v)
+    {
+        transform.right = v;
+        moveSpeed = v.magnitude;
+        movement = transform.right * moveSpeed;
+    }
 }

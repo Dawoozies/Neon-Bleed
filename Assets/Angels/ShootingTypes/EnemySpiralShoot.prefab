@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletIndex: 0
-  shotCooldown: 0.5
+  shotCooldown: 0.2
   currentAngle: 180
   angleIncreaseSpeed: 100
   pingPong: 1

@@ -279,6 +279,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 73365000}
+  - component: {fileID: 73365001}
   m_Layer: 5
   m_Name: LevelUpCanvas
   m_TagString: Untagged
@@ -306,6 +307,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &73365001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73364999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d48b0559b20e8499d0215ed1fb2ecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &120072255 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8079279178313570737, guid: 41641bd78b6d2d549a4369fd057c0231, type: 3}
@@ -14690,6 +14703,7 @@ Transform:
   - {fileID: 1296170268}
   - {fileID: 720255967}
   - {fileID: 428053944}
+  - {fileID: 1837270867}
   - {fileID: 1682904345}
   - {fileID: 1603747225}
   m_Father: {fileID: 0}
@@ -21191,7 +21205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1682904345
 Transform:
   m_ObjectHideFlags: 0
@@ -21899,6 +21913,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819521394}
   m_CullTransparentMesh: 1
+--- !u!1 &1837270866
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1837270867}
+  - component: {fileID: 1837270868}
+  m_Layer: 8
+  m_Name: MagicMissile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1837270867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837270866}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1127143744}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1837270868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837270866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d9f1a7c5585d043bade812c552896f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProjectileCooldown: {fileID: 11400000, guid: 7741c52bde33d9046a8a3cc3d4d85195, type: 2}
+  prefab: {fileID: 1019969604290199839, guid: 6c1a2f62d9be34a43841e114b090aeb4, type: 3}
+  minCooldown: 0.05
+  cooldownTimeBase: 0.2
+  shotSpeed: 100
 --- !u!1 &1861762613
 GameObject:
   m_ObjectHideFlags: 0
