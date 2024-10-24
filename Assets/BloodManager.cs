@@ -14,11 +14,11 @@ public class BloodManager : MonoBehaviour, IPoolCallbackReceiver
     public ParticleSystem bleedParticleSystem;
     public UnityEvent onBloodDepleted;
     List<Action<BloodManager>> onBloodDepletedCallbacks = new();
-    void Start()
+    protected virtual void Start()
     {
         blood = bloodMax;
     }
-    private void Update()
+    protected virtual void Update()
     {
         var emission = bleedParticleSystem.emission;
         if (bleedIntensity > 0)
@@ -44,7 +44,7 @@ public class BloodManager : MonoBehaviour, IPoolCallbackReceiver
         }
         emission.rateOverTime = bleedIntensity * bleedIntensityMultiplier;
     }
-    public void IncreaseBleedIntensity(float damage)
+    public virtual void IncreaseBleedIntensity(float damage)
     {
         bleedIntensity += damage;
     }

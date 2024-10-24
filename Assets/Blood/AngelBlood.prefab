@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6187507111701909528}
   - component: {fileID: 5435070768086580008}
   - component: {fileID: 7694053618323893061}
+  - component: {fileID: 8662276107714366980}
   m_Layer: 10
   m_Name: AngelBlood
   m_TagString: AngelBlood
@@ -96,6 +97,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
+--- !u!114 &8662276107714366980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6712059783278113729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c97c1b04bda4594e9348af6e48f86a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xBounds: {x: -100, y: 100}
+  yBounds: {x: -100, y: 100}
 --- !u!1 &7311599684624773847
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,5 +238,5 @@ MonoBehaviour:
     m_ColorSpace: 0
     m_NumColorKeys: 6
     m_NumAlphaKeys: 2
-  gradientTimeMax: 0.2
+  gradientTimeMax: 4
   deathMultiplier: 0
