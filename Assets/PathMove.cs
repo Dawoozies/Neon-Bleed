@@ -12,11 +12,13 @@ public class PathMove : PhysMovement, IVelocityComponent
     public float maxDistance;
     public AnimationCurve moveToStartSpeedCurve;
     public float edgeTraversalSpeed;
+    public AnimationCurve edgeTraversalCurve;
     [Tooltip("How long to wait at each vertex before moving on")]
     public float vertexWaitTime;
     float vertexWaitTimer;
     public int edgeIndex;
     public float progress;
+    public UnityEvent whileNotAtStarting;
     public UnityEvent whileTraversingEdge;
     public UnityEvent whileAtVertex;
     Tuple<Transform, Transform>[] edges;
@@ -80,6 +82,8 @@ public class PathMove : PhysMovement, IVelocityComponent
     }
     protected virtual void NotAtStarting()
     {
+        whileNotAtStarting?.Invoke();
+
         Vector2 startingPoint = edges[0].Item1.position;
         Vector2 dir = (startingPoint - (Vector2)transform.position).normalized;
         float distanceMagnitude = Vector2.Distance(transform.position, startingPoint);
@@ -99,11 +103,12 @@ public class PathMove : PhysMovement, IVelocityComponent
     }
     protected virtual void Traversing()
     {
+        whileTraversingEdge?.Invoke();
         float nextProgress = progress + Time.fixedDeltaTime*edgeTraversalSpeed;
-        Vector2 nextPosition = Vector2.Lerp(edges[edgeIndex].Item1.position, edges[edgeIndex].Item2.position, nextProgress);
+        Vector2 nextPosition = Vector2.Lerp(edges[edgeIndex].Item1.position, edges[edgeIndex].Item2.position, edgeTraversalCurve.Evaluate(nextProgress));
         if (pingPonging)
         {
-            nextPosition = Vector2.Lerp(edges[edgeIndex].Item2.position, edges[edgeIndex].Item1.position, nextProgress);
+            nextPosition = Vector2.Lerp(edges[edgeIndex].Item2.position, edges[edgeIndex].Item1.position, edgeTraversalCurve.Evaluate(nextProgress));
         }
         if (nextProgress >= 1f)
         {
@@ -114,6 +119,7 @@ public class PathMove : PhysMovement, IVelocityComponent
     }
     protected virtual void WaitingAtVertex()
     {
+        whileAtVertex?.Invoke();
         if(vertexWaitTimer > 0f)
         {
             vertexWaitTimer -= Time.deltaTime;

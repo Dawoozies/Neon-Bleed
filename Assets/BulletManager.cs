@@ -10,7 +10,7 @@ public class BulletManager : MonoBehaviour
     {
         ins = this;
     }
-    public GameObject[] bulletPrefabs;
+    [ReorderableList] public GameObject[] bulletPrefabs;
     public void FireBullet(int index, Vector3 v, Vector3 pos)
     {
         GameObject bullet = SharedGameObjectPool.Rent(bulletPrefabs[index]);

@@ -36,7 +36,6 @@ public class SpiralShoot : AutoShoot
     }
     public override void Shoot()
     {
-        Debug.Log("SHOOT SHOOT SHOOT");
         shotDir.x = Mathf.Cos(currentAngle * Mathf.Deg2Rad);
         shotDir.y = Mathf.Sin(currentAngle * Mathf.Deg2Rad);
         BulletManager.ins.FireBullet(bulletIndex, shotDir*shotSpeed, transform.position);
