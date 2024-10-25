@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
     {
         if(Input.GetMouseButton(0) && cooldownTimer <= 0)
         {
-            cooldownTimer = ProjectileCooldown.GetReference();
+            cooldownTimer = Mathf.Max(ProjectileCooldown.GetReference(), minCooldown);
             ShootProjectile();
         }
 

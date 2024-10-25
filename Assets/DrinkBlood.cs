@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 using uPools;
@@ -20,6 +19,7 @@ public class DrinkBlood : MonoBehaviour
     {
         PlayerMaxBloodRequired.SetReference(bloodRequiredForLevelUp);
         PlayerBloodCollected.SetReference(0);
+        PlayerSoulPower.SetReference(0);
     }
     private void Update()
     {
@@ -32,7 +32,7 @@ public class DrinkBlood : MonoBehaviour
                 SharedGameObjectPool.Return(blood.gameObject);
                 ExternalEffects.ins.PlayEffect(particleEffectIndex, transform.position);
 
-                if(PlayerBloodCollected.GetReference() >= PlayerMaxBloodRequired.GetReference())
+                if (PlayerBloodCollected.GetReference() >= PlayerMaxBloodRequired.GetReference())
                 {
                     onPlayerLevelUp?.Invoke();
                     PlayerBloodCollected.SetReference(0);

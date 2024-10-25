@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5435070768086580008}
   - component: {fileID: 7694053618323893061}
   - component: {fileID: 8662276107714366980}
+  - component: {fileID: 5993096350045044890}
   m_Layer: 10
   m_Name: AngelBlood
   m_TagString: AngelBlood
@@ -111,6 +112,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xBounds: {x: -100, y: 100}
   yBounds: {x: -100, y: 100}
+--- !u!114 &5993096350045044890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6712059783278113729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb9d9e2725a206243bb8a3836142e880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodRotTime: 10
+  onRotUpdate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8358711914247653443}
+        m_TargetAssemblyTypeName: BloodColor, Assembly-CSharp
+        m_MethodName: RotProgressUpdate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7311599684624773847
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2793192054119341372}
   - component: {fileID: 7696142219133061974}
-  - component: {fileID: 250600285367553583}
+  - component: {fileID: 8358711914247653443}
   m_Layer: 10
   m_Name: Circle
   m_TagString: Untagged
@@ -196,7 +225,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &250600285367553583
+--- !u!114 &8358711914247653443
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -205,10 +234,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7311599684624773847}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 868bc101d51ab6348a2d51eb5f3a7f42, type: 3}
+  m_Script: {fileID: 11500000, guid: 7147f0d57c07680409efbc11f418d093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angelGradient:
+  bloodGradient:
     serializedVersion: 2
     key0: {r: 1, g: 0, b: 0, a: 1}
     key1: {r: 0, g: 1, b: 0.13331223, a: 1}
@@ -238,5 +267,6 @@ MonoBehaviour:
     m_ColorSpace: 0
     m_NumColorKeys: 6
     m_NumAlphaKeys: 2
+  rotColor: {r: 0.2924528, g: 0, b: 0.008092979, a: 1}
+  rotAmount: 0
   gradientTimeMax: 4
-  deathMultiplier: 0

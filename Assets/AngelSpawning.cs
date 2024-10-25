@@ -12,6 +12,10 @@ public class AngelSpawning : MonoBehaviour
     float spawnTimer;
     public float spawnDistance;
     public float spawnVariance;
+    private void Awake()
+    {
+        spawnTimer = spawnTime;
+    }
     private void Update()
     {
         if (spawnTimer > 0)

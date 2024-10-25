@@ -7,6 +7,8 @@ public class ConvertBloodToConsumable : MonoBehaviour
 {
     public GameObject drinkableBloodPrefab;
     public float spawnRadius;
+    public int bloodCount;
+    //AsyncObjectPool<Rigidbody2D> blood
     void OnParticleCollision(GameObject other)
     {
         GameObject blood = SharedGameObjectPool.Rent(drinkableBloodPrefab);
