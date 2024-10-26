@@ -75,6 +75,9 @@ public class PathMove : PhysMovement, IVelocityComponent
         base.OnRent();
         pathStatus = Status.NotAtStarting;
         vertexWaitTimer = vertexWaitTime;
+
+        edgeIndex = 0;
+        progress = 0;
     }
     protected override void Move()
     {

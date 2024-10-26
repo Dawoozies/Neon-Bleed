@@ -1,13 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class BossBloodManager : BloodManager
 {
+    public string bossName;
     public float bleedIntensityHeal;
     public float healTime;
     float healTimer;
-    //
+    [ReorderableList] public BloodPhase[] phases;
     protected override void Update()
     {
         base.Update();
@@ -29,4 +31,10 @@ public class BossBloodManager : BloodManager
             }
         }
     }
+}
+[Serializable]
+public class BloodPhase
+{
+    public float bloodValueToEnterPhase;
+    public UnityEvent onPhaseEntered;
 }

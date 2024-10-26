@@ -28,7 +28,6 @@ public class Element : MonoBehaviour, IObserver<GameObject>
     protected MotionHandle transitionMotionHandle;
     public bool hasDelay;
     public ObservedGameObject ObservedSelectedObject;
-
     public int OrderPriority => orderPriority;
     public int orderPriority;
     protected virtual void OnEnable()
@@ -157,8 +156,28 @@ public class Element : MonoBehaviour, IObserver<GameObject>
     }
     protected virtual void TransitionToOffScreen_OnEnter(StateBase<ScreenState> state)
     {
+        //start transition
+        if (!hasDelay)
+        {
+            transitionMotionHandle = LMotion.Create(onScreenPosition, offScreenPosition, onScreenTransitionTime)
+                .WithEase(onScreenTransitionEasing)
+                .WithOnComplete(() => screenStateMachine.RequestStateChange(ScreenState.OffScreen))
+                .Bind(x => rectTransform.localPosition = x);
+        }
+        else
+        {
+            transitionMotionHandle = LMotion.Create(onScreenPosition, offScreenPosition, onScreenTransitionTime)
+                .WithEase(onScreenTransitionEasing)
+                .WithOnComplete(() => screenStateMachine.RequestStateChange(ScreenState.OffScreen))
+                .WithDelay(StaticData.ins.GetDelay(rectTransform.position, offScreenSide))
+                .Bind(x => rectTransform.localPosition = x);
+        }
     }
     protected virtual void TransitionToOffScreen_OnLogic(StateBase<ScreenState> state)
     {
+    }
+    public void ChangeScreenState(ScreenState newState)
+    {
+        screenStateMachine.RequestStateChange(newState);
     }
 }

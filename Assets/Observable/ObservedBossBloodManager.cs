@@ -1,18 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class ObservedBossBloodManager : MonoBehaviour
+[CreateAssetMenu(fileName = "ObservedBossBloodManager", menuName = "ObservedReferences/ObservedBossBloodManager", order = 6)]
+public class ObservedBossBloodManager : ObservedReference<BossBloodManager>
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

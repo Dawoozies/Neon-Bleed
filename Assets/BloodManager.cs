@@ -8,7 +8,7 @@ using uPools;
 public class BloodManager : MonoBehaviour, IPoolCallbackReceiver
 {
     public float bloodMax;
-    float blood;
+    public float blood;
     public float bleedIntensity;
     public float bleedIntensityMultiplier;
     public ParticleSystem bleedParticleSystem;
