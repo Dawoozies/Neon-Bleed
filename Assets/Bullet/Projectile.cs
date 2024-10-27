@@ -10,6 +10,11 @@ public class Projectile : MonoBehaviour
     public float cooldownTimeBase;
     float cooldownTimer;
     public float shotSpeed;
+
+    public ObservedFloat ObservedPlayerBloodlust;
+    public float bloodlustMaxCooldownReduction;
+    public AnimationCurve bloodlustCurve;
+    public float bloodlustMaxShotSpeedIncrease;
     private void Start()
     {
         ProjectileCooldown.SetReference(cooldownTimeBase);
@@ -18,7 +23,7 @@ public class Projectile : MonoBehaviour
     {
         if(Input.GetMouseButton(0) && cooldownTimer <= 0)
         {
-            cooldownTimer = Mathf.Max(ProjectileCooldown.GetReference(), minCooldown);
+            cooldownTimer = Mathf.Max(ProjectileCooldown.GetReference() - bloodlustMaxCooldownReduction* bloodlustCurve.Evaluate(ObservedPlayerBloodlust.GetReference()), minCooldown);
             ShootProjectile();
         }
 
@@ -31,7 +36,7 @@ public class Projectile : MonoBehaviour
     {
         GameObject projectileClone = SharedGameObjectPool.Rent(prefab);
         projectileClone.transform.position = transform.position;
-        projectileClone.GetComponentInChildren<PhysMovement>().SetVelocity((MousePosition.ins.WorldPos - transform.position).normalized * shotSpeed);
+        projectileClone.GetComponentInChildren<PhysMovement>().SetVelocity((MousePosition.ins.WorldPos - transform.position).normalized * (shotSpeed + bloodlustMaxShotSpeedIncrease*bloodlustCurve.Evaluate(ObservedPlayerBloodlust.GetReference())));
         //projectileClone.GetComponentInChildren<Rigidbody2D>().velocity = (MousePosition.ins.WorldPos - transform.position).normalized * shotSpeed;
     }
 }

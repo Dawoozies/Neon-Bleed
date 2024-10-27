@@ -20,7 +20,7 @@ public class Highlighter : MonoBehaviour, IObserver<GameObject>
     }
     protected virtual void OnDisable()
     {
-        ObservedSelectedObject.UnregsiterObserver(this);
+        ObservedSelectedObject.UnregisterObserver(this);
     }
     protected virtual void Start()
     {

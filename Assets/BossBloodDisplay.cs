@@ -24,7 +24,7 @@ public class BossBloodDisplay : MonoBehaviour, IObserver<BossBloodManager>
     }
     protected virtual void OnDisable()
     {
-        ObservedBossBloodManager.UnregsiterObserver(this);
+        ObservedBossBloodManager.UnregisterObserver(this);
     }
     public void OnSetReference(BossBloodManager previousRef, BossBloodManager newRef)
     {

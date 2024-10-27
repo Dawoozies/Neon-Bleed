@@ -302,6 +302,155 @@ Transform:
   m_Children: []
   m_Father: {fileID: 209018470}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &95680015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 95680016}
+  - component: {fileID: 95680019}
+  - component: {fileID: 95680018}
+  - component: {fileID: 95680017}
+  m_Layer: 5
+  m_Name: BloodlustText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &95680016
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95680015}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1064221752}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.00012207031, y: 0}
+  m_SizeDelta: {x: -0.00061035, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &95680017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95680015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156cc092ff83d5542b1647374d89f867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paletteIndex: 0
+  motionData: {fileID: 11400000, guid: 86edfa3aeff8d924e973b912bb57cbbe, type: 2}
+--- !u!114 &95680018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95680015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: BLOODLUST 100%
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: f3177b67de396c74ebe7a7b7da953cad, type: 2}
+  m_sharedMaterial: {fileID: -4893430479230940169, guid: f3177b67de396c74ebe7a7b7da953cad, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 34.55
+  m_fontSizeBase: 48
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 12
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 0
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 10, y: 10, z: 10, w: 10}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &95680019
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95680015}
+  m_CullTransparentMesh: 1
 --- !u!224 &120072255 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8079279178313570737, guid: 41641bd78b6d2d549a4369fd057c0231, type: 3}
@@ -6754,7 +6903,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &406492912
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6872,9 +7021,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileCooldown: {fileID: 11400000, guid: 7741c52bde33d9046a8a3cc3d4d85195, type: 2}
   prefab: {fileID: 1019969604290199839, guid: df3885dbfcb9a524fadcbb665d9467b2, type: 3}
-  minCooldown: 0.1
+  minCooldown: 0.05
   cooldownTimeBase: 0.5
   shotSpeed: 100
+  ObservedPlayerBloodlust: {fileID: 11400000, guid: e1339b7b484a08c45b220bb8cbb05d7e, type: 2}
+  bloodlustMaxCooldownReduction: 0.5
+  bloodlustCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  bloodlustMaxShotSpeedIncrease: 200
 --- !u!224 &437643511 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8079279178313570737, guid: 41641bd78b6d2d549a4369fd057c0231, type: 3}
@@ -7566,7 +7742,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &702216217
 Transform:
   m_ObjectHideFlags: 0
@@ -7599,9 +7775,35 @@ MonoBehaviour:
   spawnPoint: {fileID: 1649976293}
   bosses:
   - {fileID: 1918858399774282133, guid: 30e57281aa82c294bb2a143f20f3f658, type: 3}
-  spawnTime: 3
+  spawnTime: 120
   spawnAtAwake: 0
   ActiveBossBloodManager: {fileID: 11400000, guid: a3943174e0f87a64193a68f0b58f8cd5, type: 2}
+  ObservedPlayerBloodlust: {fileID: 11400000, guid: e1339b7b484a08c45b220bb8cbb05d7e, type: 2}
+  spawnTimerSpeed: 3
+  spawnTimeSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!224 &714795121 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8079279178313570737, guid: 41641bd78b6d2d549a4369fd057c0231, type: 3}
@@ -12982,6 +13184,96 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &825431465
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 825431466}
+  - component: {fileID: 825431469}
+  - component: {fileID: 825431468}
+  - component: {fileID: 825431467}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &825431466
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825431465}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1064221752}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &825431467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825431465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 880c9e5ee1d120643877d37467657d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paletteIndex: 1
+  motionData: {fileID: 11400000, guid: 86edfa3aeff8d924e973b912bb57cbbe, type: 2}
+--- !u!114 &825431468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825431465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &825431469
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825431465}
+  m_CullTransparentMesh: 1
 --- !u!1001 &853604719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14386,6 +14678,7 @@ RectTransform:
   - {fileID: 404997641}
   - {fileID: 358376185}
   - {fileID: 1819521395}
+  - {fileID: 1064221752}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -14712,6 +15005,88 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1056548967}
+  m_CullTransparentMesh: 1
+--- !u!1 &1064221751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1064221752}
+  - component: {fileID: 1064221755}
+  - component: {fileID: 1064221754}
+  - component: {fileID: 1064221753}
+  m_Layer: 5
+  m_Name: PlayerBloodlustDisplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1064221752
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064221751}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 825431466}
+  - {fileID: 95680016}
+  m_Father: {fileID: 1036638198}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 520, y: 83.27}
+  m_SizeDelta: {x: 294.365, y: 80}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1064221753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064221751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73a2832a4da23624986cca64cfe306ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedPlayerBloodlust: {fileID: 11400000, guid: e1339b7b484a08c45b220bb8cbb05d7e, type: 2}
+  text: {fileID: 95680018}
+--- !u!114 &1064221754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064221751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71fcfa4e76beef742bfadbb993c40add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenState: 0
+  startingScreenState: 1
+  offScreenSide: 3
+  onScreenTransitionTime: 1
+  onScreenTransitionEasing: 18
+  hasDelay: 0
+  ObservedSelectedObject: {fileID: 0}
+  orderPriority: 0
+--- !u!222 &1064221755
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064221751}
   m_CullTransparentMesh: 1
 --- !u!1 &1066708954
 GameObject:
@@ -15063,7 +15438,7 @@ GameObject:
   - component: {fileID: 1127143750}
   - component: {fileID: 1127143751}
   - component: {fileID: 1127143752}
-  - component: {fileID: 1127143753}
+  - component: {fileID: 1127143754}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -15323,18 +15698,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1127143753}
-        m_TargetAssemblyTypeName: UpgradeCooldown, Assembly-CSharp
-        m_MethodName: Upgrade
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1127143752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15356,7 +15719,7 @@ MonoBehaviour:
   onPlayerDead:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1127143753
+--- !u!114 &1127143754
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15365,11 +15728,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 1127143740}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb489fbc77fdc5f44920aa7baf64c1eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ed88ac9db88e9d49a145b381610e06f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownStat: {fileID: 11400000, guid: 7741c52bde33d9046a8a3cc3d4d85195, type: 2}
-  reductionPerLevel: -0.0125
+  ObservedPlayerBloodCollected: {fileID: 11400000, guid: 95f3f97319ed83b438d54c9ffacde6c7, type: 2}
+  ObservedPlayerHealth: {fileID: 11400000, guid: 8e85270645da0ee4891cdd3a13ad835c, type: 2}
+  ObservedPlayerBloodShield: {fileID: 11400000, guid: dc6cbacd692a491469e03ec7f83f88f3, type: 2}
+  ObservedPlayerBloodlust: {fileID: 11400000, guid: e1339b7b484a08c45b220bb8cbb05d7e, type: 2}
+  bloodlustMaxValue: 1000
+  bloodlustValue: 0
+  bloodlustCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1140511307
 GameObject:
   m_ObjectHideFlags: 0
@@ -21867,6 +22258,33 @@ MonoBehaviour:
   minCooldown: 0.1
   cooldownTimeBase: 0.3
   shotSpeed: 200
+  ObservedPlayerBloodlust: {fileID: 11400000, guid: e1339b7b484a08c45b220bb8cbb05d7e, type: 2}
+  bloodlustMaxCooldownReduction: 0.1
+  bloodlustCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  bloodlustMaxShotSpeedIncrease: 1
 --- !u!1 &1604094422
 GameObject:
   m_ObjectHideFlags: 0
@@ -22171,6 +22589,33 @@ MonoBehaviour:
   minCooldown: 0.05
   cooldownTimeBase: 1
   shotSpeed: 100
+  ObservedPlayerBloodlust: {fileID: 11400000, guid: e1339b7b484a08c45b220bb8cbb05d7e, type: 2}
+  bloodlustMaxCooldownReduction: 0.1
+  bloodlustCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  bloodlustMaxShotSpeedIncrease: 1
 --- !u!1 &1690114068
 GameObject:
   m_ObjectHideFlags: 0
@@ -22758,10 +23203,38 @@ MonoBehaviour:
   defaultLayer: 9
   angelSpawnPoint: {fileID: 1690114069}
   angelPrefab: {fileID: 3556888254987139034, guid: 0f2e6c199c4ed91409e2a93dda553116, type: 3}
-  spawnTime: 8
+  spawnTime: 10
   spawnDistance: 15
   spawnVariance: 5
   spawnAtAwake: 1
+  bossIsActive: 0
+  ObservedBossBloodManager: {fileID: 11400000, guid: a3943174e0f87a64193a68f0b58f8cd5, type: 2}
+  ObservedPlayerBloodlust: {fileID: 11400000, guid: e1339b7b484a08c45b220bb8cbb05d7e, type: 2}
+  spawnTimerSpeed: 3
+  spawnTimeSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1814010508
 Transform:
   m_ObjectHideFlags: 0
@@ -23017,6 +23490,33 @@ MonoBehaviour:
   minCooldown: 0.05
   cooldownTimeBase: 0.2
   shotSpeed: 100
+  ObservedPlayerBloodlust: {fileID: 11400000, guid: e1339b7b484a08c45b220bb8cbb05d7e, type: 2}
+  bloodlustMaxCooldownReduction: 0.1
+  bloodlustCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  bloodlustMaxShotSpeedIncrease: 1
 --- !u!1 &1861762613
 GameObject:
   m_ObjectHideFlags: 0

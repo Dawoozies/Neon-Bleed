@@ -9,7 +9,6 @@ public class BossBloodManager : BloodManager
     public float bleedIntensityHeal;
     public float healTime;
     float healTimer;
-    [ReorderableList] public BloodPhase[] phases;
     protected override void Update()
     {
         base.Update();
@@ -31,10 +30,4 @@ public class BossBloodManager : BloodManager
             }
         }
     }
-}
-[Serializable]
-public class BloodPhase
-{
-    public float bloodValueToEnterPhase;
-    public UnityEvent onPhaseEntered;
 }

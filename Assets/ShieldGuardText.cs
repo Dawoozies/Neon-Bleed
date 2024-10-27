@@ -22,7 +22,7 @@ public class ShieldGuardText : MonoBehaviour, IObserver<int>
     }
     void OnDisable()
     {
-        ObservedPlayerBloodShield.UnregsiterObserver(this);
+        ObservedPlayerBloodShield.UnregisterObserver(this);
     }
     public void OnSetReference(int previousRef, int newRef)
     {

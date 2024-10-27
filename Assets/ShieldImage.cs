@@ -12,7 +12,7 @@ public class ShieldImage : MonoBehaviour, IObserver<int>
     }
     void OnDisable()
     {
-        ObservedPlayerBloodShield.UnregsiterObserver(this);
+        ObservedPlayerBloodShield.UnregisterObserver(this);
     }
     public int OrderPriority => 0;
     public int shieldValue;

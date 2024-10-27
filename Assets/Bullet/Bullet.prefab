@@ -220,8 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030024ce8aae0c54b9b2f4d0e9e288a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeAmplitude: 1
-  maxVelocity: 1500
+  shakeAmplitude: 0.2
+  maxVelocity: 2500
   velocityShakeCurve:
     serializedVersion: 2
     m_Curve:

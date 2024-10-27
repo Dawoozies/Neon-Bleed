@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using uPools;
 
-public class AngelSpawning : MonoBehaviour
+public class AngelSpawning : MonoBehaviour, IObserver<BossBloodManager>
 {
     [Layer] public int defaultLayer;
     public Transform angelSpawnPoint;
@@ -13,16 +13,35 @@ public class AngelSpawning : MonoBehaviour
     public float spawnDistance;
     public float spawnVariance;
     public bool spawnAtAwake;
+    public bool bossIsActive;
+    public ObservedBossBloodManager ObservedBossBloodManager;
+
+    public int OrderPriority => 0;
+
+    public ObservedFloat ObservedPlayerBloodlust;
+    public float spawnTimerSpeed;
+    public AnimationCurve spawnTimeSpeedCurve;
     private void Awake()
     {
         if(!spawnAtAwake)
             spawnTimer = spawnTime;
     }
+    private void OnEnable()
+    {
+        ObservedBossBloodManager.RegisterObserver(this);
+    }
+    private void OnDisable()
+    {
+        ObservedBossBloodManager.UnregisterObserver(this);
+    }
     private void Update()
     {
+        if (bossIsActive)
+            return;
+
         if (spawnTimer > 0)
         {
-            spawnTimer -= Time.deltaTime;
+            spawnTimer -= Time.deltaTime * (1 + spawnTimerSpeed * spawnTimeSpeedCurve.Evaluate(ObservedPlayerBloodlust.GetReference()));
         }
         else
         {
@@ -33,5 +52,9 @@ public class AngelSpawning : MonoBehaviour
             newAngel.transform.rotation = Quaternion.identity;
             newAngel.SetSpawnPosition(angelSpawnPoint.position, 0.3f);
         }
+    }
+    public void OnSetReference(BossBloodManager previousRef, BossBloodManager newRef)
+    {
+        bossIsActive = newRef != null;
     }
 }

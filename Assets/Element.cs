@@ -38,7 +38,7 @@ public class Element : MonoBehaviour, IObserver<GameObject>
     protected virtual void OnDisable()
     {
         if (ObservedSelectedObject != null)
-            ObservedSelectedObject.UnregsiterObserver(this);
+            ObservedSelectedObject.UnregisterObserver(this);
     }
     protected virtual void Start()
     {

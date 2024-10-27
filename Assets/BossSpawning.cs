@@ -13,6 +13,10 @@ public class BossSpawning : MonoBehaviour
     int bossIndex;
     public bool spawnAtAwake;
     public ObservedBossBloodManager ActiveBossBloodManager;
+
+    public ObservedFloat ObservedPlayerBloodlust;
+    public float spawnTimerSpeed;
+    public AnimationCurve spawnTimeSpeedCurve;
     private void Awake()
     {
         ActiveBossBloodManager.SetReference(null);
@@ -25,9 +29,11 @@ public class BossSpawning : MonoBehaviour
         if (bossIndex >= bosses.Length)
             return;
 
+
+
         if (spawnTimer > 0)
         {
-            spawnTimer -= Time.deltaTime;
+            spawnTimer -= Time.deltaTime * (1 + spawnTimerSpeed* spawnTimeSpeedCurve.Evaluate(ObservedPlayerBloodlust.GetReference()));
         }
         else
         {
