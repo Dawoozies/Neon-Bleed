@@ -7,7 +7,7 @@ public class AngelSpawning : MonoBehaviour, IObserver<BossBloodManager>
 {
     [Layer] public int defaultLayer;
     public Transform angelSpawnPoint;
-    public GameObject angelPrefab;
+    public GameObject[] angelPrefabs;
     public float spawnTime;
     float spawnTimer;
     public float spawnDistance;
@@ -34,6 +34,10 @@ public class AngelSpawning : MonoBehaviour, IObserver<BossBloodManager>
     {
         ObservedBossBloodManager.UnregisterObserver(this);
     }
+    public GameObject GetRandomAngel()
+    {
+        return angelPrefabs[Random.Range(0, angelPrefabs.Length)];
+    }
     private void Update()
     {
         if (bossIsActive)
@@ -46,7 +50,7 @@ public class AngelSpawning : MonoBehaviour, IObserver<BossBloodManager>
         else
         {
             spawnTimer = spawnTime;
-            AngelSpawn newAngel = SharedGameObjectPool.Rent(angelPrefab.GetComponent<AngelSpawn>());
+            AngelSpawn newAngel = SharedGameObjectPool.Rent(GetRandomAngel().GetComponent<AngelSpawn>());
             newAngel.gameObject.layer = defaultLayer;
             newAngel.transform.position = angelSpawnPoint.position + Vector3.up * spawnDistance + (Vector3)Random.insideUnitCircle * spawnVariance;
             newAngel.transform.rotation = Quaternion.identity;

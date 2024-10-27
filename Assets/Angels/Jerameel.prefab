@@ -177,6 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletIndex: 0
   shotCooldown: 0.3
+  manualOnly: 0
   angles:
   - 0
   - 90
@@ -231,6 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletIndex: 1
   shotCooldown: 0.1
+  manualOnly: 0
   currentAngle: 270
   angleIncreaseSpeed: 90
   pingPong: 0
@@ -281,6 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletIndex: 1
   shotCooldown: 0.4
+  manualOnly: 0
   angles:
   - 45
   - 135
@@ -335,6 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletIndex: 1
   shotCooldown: 0.1
+  manualOnly: 0
   currentAngle: 0
   angleIncreaseSpeed: 90
   pingPong: 0
@@ -5259,6 +5263,7 @@ GameObject:
   - component: {fileID: 5472168509128319880}
   - component: {fileID: 7339162471762057204}
   - component: {fileID: 7859323772554781469}
+  - component: {fileID: 2915395537583310909}
   m_Layer: 9
   m_Name: Jerameel
   m_TagString: Untagged
@@ -5702,6 +5707,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3394bc1a70cb6a94c82bab91d1647b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2915395537583310909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918858399774282133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0205ccae4f63243b6e51514e94e52f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phases:
+  - entered: 0
+    bloodThreshold: 4000
+    onPhaseEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3580003932980890836}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1972313253904489769
 GameObject:
   m_ObjectHideFlags: 0
@@ -5748,6 +5783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletIndex: 1
   shotCooldown: 0.1
+  manualOnly: 0
   currentAngle: 180
   angleIncreaseSpeed: -90
   pingPong: 0
@@ -6297,6 +6333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletIndex: 1
   shotCooldown: 0.1
+  manualOnly: 0
   currentAngle: 90
   angleIncreaseSpeed: -90
   pingPong: 0

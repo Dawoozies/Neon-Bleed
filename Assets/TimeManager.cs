@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
+    public static TimeManager ins;
+    private void Awake()
+    {
+        ins = this;
+    }
     public KeyCode pauseKey;
     public bool pause;
+    public float slowDownTimeLeft;
+    public float slowTime;
     private void Update()
     {
         if(Input.GetKeyDown(pauseKey))
@@ -18,7 +25,21 @@ public class TimeManager : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 1f;
+            if (slowDownTimeLeft > 0)
+            {
+                slowDownTimeLeft -= Time.unscaledDeltaTime;
+                Time.timeScale = slowTime;
+            }
+            else
+            {
+                Time.timeScale = 1f;
+            }
         }
+
+
+    }
+    public void SlowDownTime(float slowDownTime)
+    {
+        slowDownTimeLeft = slowDownTime;
     }
 }

@@ -23202,7 +23202,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultLayer: 9
   angelSpawnPoint: {fileID: 1690114069}
-  angelPrefab: {fileID: 3556888254987139034, guid: 0f2e6c199c4ed91409e2a93dda553116, type: 3}
+  angelPrefabs:
+  - {fileID: 3556888254987139034, guid: 0f2e6c199c4ed91409e2a93dda553116, type: 3}
+  - {fileID: 7095535048519529442, guid: fd23a362b2deb1941982477ea4aae286, type: 3}
   spawnTime: 10
   spawnDistance: 15
   spawnVariance: 5
