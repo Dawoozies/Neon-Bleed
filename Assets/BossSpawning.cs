@@ -17,6 +17,7 @@ public class BossSpawning : MonoBehaviour
     public ObservedFloat ObservedPlayerBloodlust;
     public float spawnTimerSpeed;
     public AnimationCurve spawnTimeSpeedCurve;
+    public bool allowBossRepeat;
     private void Awake()
     {
         ActiveBossBloodManager.SetReference(null);
@@ -26,10 +27,10 @@ public class BossSpawning : MonoBehaviour
     }
     private void Update()
     {
-        if (bossIndex >= bosses.Length)
+        if (!allowBossRepeat && bossIndex >= bosses.Length)
             return;
-
-
+        if (ActiveBossBloodManager.GetReference() != null)
+            return;
 
         if (spawnTimer > 0)
         {
@@ -49,6 +50,10 @@ public class BossSpawning : MonoBehaviour
             ActiveBossBloodManager.SetReference(bossBloodManager);
 
             bossIndex++;
+            if(allowBossRepeat)
+            {
+                bossIndex = bossIndex % bosses.Length;
+            }
         }
     }
     void OnBossDefeated(BloodManager bloodManager)

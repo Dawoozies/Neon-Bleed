@@ -142,8 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030024ce8aae0c54b9b2f4d0e9e288a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeAmplitude: 0.6
-  maxVelocity: 200
+  shakeAmplitude: 0.4
+  maxVelocity: 1500
   velocityShakeCurve:
     serializedVersion: 2
     m_Curve:
@@ -268,6 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42f6adb32e7c0444a8c8e0b4c6d1596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectsToPlay: 07000000
   effectIndex: 7
   hitResultEmit: 0
 --- !u!1 &5912996227863839295

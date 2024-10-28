@@ -34,4 +34,11 @@ public class ElementMotions : MonoBehaviour
             }
             );
     }
+    void OnDestroy()
+    {
+        if (currentMotion.IsActive())
+        {
+            currentMotion.Cancel();
+        }
+    }
 }

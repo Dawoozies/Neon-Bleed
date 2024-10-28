@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using uPools;
-public class NestAttachImpact : MonoBehaviour
+public class NestAttachImpact : MonoBehaviour, IPoolCallbackReceiver
 {
     public GameObject nestInhabitantPrefab;
     public int amountToSpawn;
+    public float maxAttachTime;
+    float attachTime;
     public float damage;
     public float damageTime;
     BloodManager attachedBloodManager;
@@ -60,6 +62,13 @@ public class NestAttachImpact : MonoBehaviour
                 t = damageTime;
                 DealDamage();
             }
+
+            attachTime += Time.deltaTime;
+            if(attachTime >= maxAttachTime)
+            {
+                attachedBloodManager.UnregisterOnBloodDepletedCallback(OnAngelBloodDepletedHandler);
+                OnAngelBloodDepletedHandler(attachedBloodManager);
+            }
         }
     }
     public virtual void DealDamage()
@@ -74,5 +83,13 @@ public class NestAttachImpact : MonoBehaviour
             newSpawn.transform.position = transform.position;
             newSpawn.transform.right = Random.insideUnitCircle;
         }
+    }
+
+    public void OnRent()
+    {
+        attachTime = 0f;
+    }
+    public void OnReturn()
+    {
     }
 }

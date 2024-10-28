@@ -73,11 +73,14 @@ public class PathMove : PhysMovement, IVelocityComponent
     public override void OnRent()
     {
         base.OnRent();
+        Debug.Log("PathMove.OnRent running");
         pathStatus = Status.NotAtStarting;
         vertexWaitTimer = vertexWaitTime;
 
         edgeIndex = 0;
         progress = 0;
+
+        moveStateMachine.RequestStateChange(pathStatus);
     }
     protected override void Move()
     {

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7635472034190761190}
   - component: {fileID: 5942204753086294205}
   m_Layer: 14
-  m_Name: MagicMissile
+  m_Name: BossKiller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.8477471, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91968caccb174714f9e83fc647b8611f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 1000
   damagePlayer: 0
 --- !u!114 &5942204753086294205
 MonoBehaviour:

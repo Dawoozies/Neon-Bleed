@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42f6adb32e7c0444a8c8e0b4c6d1596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectsToPlay: 05000000
   effectIndex: 5
   hitResultEmit: 0
 --- !u!114 &5461643831780799463
@@ -221,8 +222,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nestInhabitantPrefab: {fileID: 4870379350362551968, guid: a8a4a7229460b6842807730503ddfe8e, type: 3}
-  amountToSpawn: 10
-  damage: 5
+  amountToSpawn: 5
+  maxAttachTime: 5
+  damage: 2
   damageTime: 0.5
   onAttached:
     m_PersistentCalls:

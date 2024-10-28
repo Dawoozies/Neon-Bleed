@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakeAmplitude: 1
-  maxVelocity: 500
+  maxVelocity: 1500
   velocityShakeCurve:
     serializedVersion: 2
     m_Curve:
@@ -236,7 +236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42f6adb32e7c0444a8c8e0b4c6d1596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectIndex: 0
+  effectsToPlay: 0000000001000000
+  effectIndex: 1
   hitResultEmit: 0
 --- !u!114 &6462885329487788137
 MonoBehaviour:
@@ -250,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda7562d4070ba8478a181f09b919a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 10
   damageFalloff:
     serializedVersion: 2
     m_Curve:
@@ -275,7 +276,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxDist: 20
+  maxDist: 40
 --- !u!1 &4709906464854105443
 GameObject:
   m_ObjectHideFlags: 0

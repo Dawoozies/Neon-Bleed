@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3584398003808594644}
   - component: {fileID: 3089384932206907923}
   - component: {fileID: 7635472034190761190}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 2304
+    m_Bits: 18688
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030024ce8aae0c54b9b2f4d0e9e288a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeAmplitude: 0.2
+  shakeAmplitude: 0.1
   maxVelocity: 2500
   velocityShakeCurve:
     serializedVersion: 2
@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42f6adb32e7c0444a8c8e0b4c6d1596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectsToPlay: 02000000
   effectIndex: 2
   hitResultEmit: 0
 --- !u!114 &7635472034190761190
@@ -272,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91968caccb174714f9e83fc647b8611f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
   damagePlayer: 0
 --- !u!1001 &7464101169524317477
 PrefabInstance:
@@ -325,6 +326,10 @@ PrefabInstance:
     - target: {fileID: 593508711779876272, guid: 507a65cf6cc3289438e8ca27650c0a5d, type: 3}
       propertyPath: m_Name
       value: SmokeLikeTrail
+      objectReference: {fileID: 0}
+    - target: {fileID: 593508711779876272, guid: 507a65cf6cc3289438e8ca27650c0a5d, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

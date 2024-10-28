@@ -29,7 +29,7 @@ public class Gravity : PhysMovement, IVelocityComponent
     public override void Update()
     {
         base.Update();
-        if (results.Length == 0)
+        if (results != null && results.Length == 0)
         {
             airTime += Time.deltaTime;
         }

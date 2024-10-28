@@ -53,12 +53,16 @@ PrefabInstance:
       value: MissileImpactBurst
       objectReference: {fileID: 0}
     - target: {fileID: 8455494159009052675, guid: 68e517f931a5a7649951e18e4920e7ab, type: 3}
+      propertyPath: simulationSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455494159009052675, guid: 68e517f931a5a7649951e18e4920e7ab, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
       value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 8455494159009052675, guid: 68e517f931a5a7649951e18e4920e7ab, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8455494159009052675, guid: 68e517f931a5a7649951e18e4920e7ab, type: 3}
       propertyPath: InitialModule.startSpeed.minMaxState
@@ -67,6 +71,14 @@ PrefabInstance:
     - target: {fileID: 8455494159009052675, guid: 68e517f931a5a7649951e18e4920e7ab, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455494159009052675, guid: 68e517f931a5a7649951e18e4920e7ab, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].inSlope
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455494159009052675, guid: 68e517f931a5a7649951e18e4920e7ab, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].outSlope
+      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

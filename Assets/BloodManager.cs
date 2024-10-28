@@ -52,7 +52,11 @@ public class BloodManager : MonoBehaviour, IPoolCallbackReceiver
     {
         onBloodDepletedCallbacks.Add(a);
     }
-
+    public void UnregisterOnBloodDepletedCallback(Action<BloodManager> a)
+    {
+        if(onBloodDepletedCallbacks.Contains(a))
+            onBloodDepletedCallbacks.Remove(a);
+    }
     public void OnRent()
     {
     }

@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using uPools;
+
 public class AngelSpawn : MonoBehaviour
 {
     public Vector3 spawnPosition;
@@ -15,6 +17,7 @@ public class AngelSpawn : MonoBehaviour
     public float distance;
     public void SetSpawnPosition(Vector3 spawnPosition, float smoothTime)
     {
+        Debug.Log("SetSpawnPosition running");
         this.spawnPosition = spawnPosition;
         this.smoothTime = smoothTime;
         spawned = false;

@@ -10,6 +10,8 @@ public class PlayerHealth : MonoBehaviour
     public float defaultHealthValue;
     public int defaultShieldValue;
     public UnityEvent onPlayerDead;
+    public float iFrameTime;
+    float iFrameTimer;
     private void Start()
     {
         ObservedPlayerMaxHealth.SetReference(defaultMaxHealthValue);
@@ -18,6 +20,8 @@ public class PlayerHealth : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
+        if (iFrameTimer > 0)
+            return;
         int currentShieldValue = ObservedPlayerBloodShield.GetReference();
         if (currentShieldValue > 0)
         {
@@ -30,6 +34,7 @@ public class PlayerHealth : MonoBehaviour
         {
             onPlayerDead?.Invoke();
         }
+        iFrameTimer = iFrameTime;
     }
     public void RestoreAllShields()
     {
@@ -44,5 +49,12 @@ public class PlayerHealth : MonoBehaviour
             }
         }
         ObservedPlayerBloodShield.SetReference(shieldsRestored);
+    }
+    void Update()
+    {
+        if (iFrameTimer > 0)
+        {
+            iFrameTimer -= Time.deltaTime;
+        }
     }
 }
