@@ -16,15 +16,33 @@ public class Projectile : MonoBehaviour
     public AnimationCurve bloodlustCurve;
     public float bloodlustMaxShotSpeedIncrease;
 
-    [ReorderableList] public float[] angles;
+    public Stats entityStats;
+    public int weaponId;
+    public bool weaponIsUnlocked;
     Vector2[] shotDirs;
+    void OnEnable()
+    {
+        entityStats.RegisterOnValidateCallback(OnStatsValidated);
+    }
+    void OnDisable()
+    {
+        entityStats.UnregisterOnValidateCallback(OnStatsValidated);
+    }
+    void OnStatsValidated()
+    {
+        weaponIsUnlocked = entityStats.weaponsUnlocked.Contains(weaponId);
+        RecalculateShotDirs();
+    }
     private void Start()
     {
         ProjectileCooldown.SetReference(cooldownTimeBase);
-        RecalculateShotDirs();
+        OnStatsValidated();
     }
     private void Update()
     {
+        if (!weaponIsUnlocked)
+            return;
+
         if(Input.GetMouseButton(0) && cooldownTimer <= 0)
         {
             cooldownTimer = Mathf.Max(ProjectileCooldown.GetReference() - bloodlustMaxCooldownReduction* bloodlustCurve.Evaluate(ObservedPlayerBloodlust.GetReference()), minCooldown);
@@ -52,11 +70,11 @@ public class Projectile : MonoBehaviour
     }
     public virtual void RecalculateShotDirs()
     {
-        shotDirs = new Vector2[angles.Length];
+        shotDirs = new Vector2[entityStats.shotAngles.Count];
         for (int i = 0; i < shotDirs.Length; i++)
         {
-            shotDirs[i].x = Mathf.Cos(angles[i] * Mathf.Deg2Rad);
-            shotDirs[i].y = Mathf.Sin(angles[i] * Mathf.Deg2Rad);
+            shotDirs[i].x = Mathf.Cos(entityStats.shotAngles[i] * Mathf.Deg2Rad);
+            shotDirs[i].y = Mathf.Sin(entityStats.shotAngles[i] * Mathf.Deg2Rad);
         }
     }
 }

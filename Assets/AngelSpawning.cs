@@ -21,10 +21,15 @@ public class AngelSpawning : MonoBehaviour, IObserver<BossBloodManager>
     public ObservedFloat ObservedPlayerBloodlust;
     public float spawnTimerSpeed;
     public AnimationCurve spawnTimeSpeedCurve;
+
+    public int maxAngelsAtOnce;
+    public ObservedInt ActiveAngelCount;
     private void Awake()
     {
         if(!spawnAtAwake)
             spawnTimer = spawnTime;
+
+        ActiveAngelCount.SetReference(0);
     }
     private void OnEnable()
     {
@@ -43,6 +48,9 @@ public class AngelSpawning : MonoBehaviour, IObserver<BossBloodManager>
         if (bossIsActive)
             return;
 
+        if (ActiveAngelCount.GetReference() >= maxAngelsAtOnce)
+            return;
+
         if (spawnTimer > 0)
         {
             spawnTimer -= Time.deltaTime * (1 + spawnTimerSpeed * spawnTimeSpeedCurve.Evaluate(ObservedPlayerBloodlust.GetReference()));
@@ -55,10 +63,18 @@ public class AngelSpawning : MonoBehaviour, IObserver<BossBloodManager>
             newAngel.transform.position = angelSpawnPoint.position + Vector3.up * spawnDistance + (Vector3)Random.insideUnitCircle * spawnVariance;
             newAngel.transform.rotation = Quaternion.identity;
             newAngel.SetSpawnPosition(angelSpawnPoint.position, 0.3f);
+
+            BloodManager bloodManager = newAngel.GetComponent<BloodManager>();
+            ActiveAngelCount.Increment();
+            bloodManager.RegisterOnBloodDepletedCallback(OnAngelDefeated);
         }
     }
     public void OnSetReference(BossBloodManager previousRef, BossBloodManager newRef)
     {
         bossIsActive = newRef != null;
+    }
+    void OnAngelDefeated(BloodManager bloodManager)
+    {
+        ActiveAngelCount.Decrement();
     }
 }
