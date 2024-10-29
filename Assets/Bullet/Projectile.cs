@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
     }
     void OnStatsValidated()
     {
-        weaponIsUnlocked = entityStats.weaponsUnlocked.Contains(weaponId);
+        weaponIsUnlocked = entityStats.WeaponIsUnlocked(weaponId);
         RecalculateShotDirs();
     }
     private void Start()
@@ -70,11 +70,12 @@ public class Projectile : MonoBehaviour
     }
     public virtual void RecalculateShotDirs()
     {
-        shotDirs = new Vector2[entityStats.shotAngles.Count];
+        List<int> shotAngles = entityStats.GetShotAngles(weaponId);
+        shotDirs = new Vector2[shotAngles.Count];
         for (int i = 0; i < shotDirs.Length; i++)
         {
-            shotDirs[i].x = Mathf.Cos(entityStats.shotAngles[i] * Mathf.Deg2Rad);
-            shotDirs[i].y = Mathf.Sin(entityStats.shotAngles[i] * Mathf.Deg2Rad);
+            shotDirs[i].x = Mathf.Cos(shotAngles[i] * Mathf.Deg2Rad);
+            shotDirs[i].y = Mathf.Sin(shotAngles[i] * Mathf.Deg2Rad);
         }
     }
 }

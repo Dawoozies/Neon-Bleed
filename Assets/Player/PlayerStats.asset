@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
   damageMultiplier: 1
-  weaponsUnlocked: 00000000
-  shotAngles:
-  - 0
+  weaponsUnlocked:
+  - weaponId: 0
+    shotAngles: feffffffffffffff000000000100000002000000

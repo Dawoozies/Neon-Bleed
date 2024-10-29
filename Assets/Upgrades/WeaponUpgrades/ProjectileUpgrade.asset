@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaff60ec7190d844883f21614efe0270, type: 3}
-  m_Name: PlayerStatsDefault
+  m_Script: {fileID: 11500000, guid: 8e40a8647b00fcd4e8ac84406977ea8b, type: 3}
+  m_Name: ProjectileUpgrade
   m_EditorClassIdentifier: 
-  damageMultiplier: 1
-  weaponsUnlocked:
-  - weaponId: 0
+  entityStats: {fileID: 11400000, guid: 3373478f968a92647a6ce71a49be470c, type: 2}
+  weaponStats:
+    weaponId: 0
     shotAngles: 00000000
