@@ -12,25 +12,29 @@ public class PlayerBloodlust : MonoBehaviour
     public float bloodlustMaxValue;
     public float bloodlustValue;
     public AnimationCurve bloodlustCurve;
+    public ObservedFloat BloodlustPercent;
     private void OnEnable()
     {
+        ObservedPlayerBloodlust.SetReference(0);
+        BloodlustPercent.SetReference(0);
+
         ObservedPlayerBloodCollected.RegisterObserver(OrderPriority, PlayerBloodCollected_OnSetReference);
         ObservedPlayerBloodShield.RegisterObserver(OrderPriority, PlayerBloodShield_OnSetReference);
         ObservedPlayerHealth.RegisterObserver(OrderPriority, PlayerHealth_OnSetReference);
-        ObservedPlayerBloodlust.SetReference(0);
+        ObservedPlayerBloodlust.RegisterObserver(OrderPriority, PlayerBloodlust_OnSetReference);
     }
     private void OnDisable()
     {
         ObservedPlayerBloodCollected.UnregisterObserver(OrderPriority, PlayerBloodCollected_OnSetReference);
         ObservedPlayerBloodShield.UnregisterObserver(OrderPriority, PlayerBloodShield_OnSetReference);
         ObservedPlayerHealth.UnregisterObserver(OrderPriority, PlayerHealth_OnSetReference);
+        ObservedPlayerBloodlust.UnregisterObserver(OrderPriority, PlayerBloodlust_OnSetReference);
     }
     void PlayerBloodCollected_OnSetReference(int previousValue, int newValue)
     {
         if(newValue > previousValue)
         {
-            bloodlustValue++;
-            SetBloodlustReference();
+            ObservedPlayerBloodlust.SetReference(ObservedPlayerBloodlust.GetReference() + 1);  
         }
     }
     void PlayerHealth_OnSetReference(float previousValue, float newValue)
@@ -38,20 +42,20 @@ public class PlayerBloodlust : MonoBehaviour
         if(newValue < previousValue)
         {
             //took health damage
-            bloodlustValue = 0f;
-            SetBloodlustReference();
+            ObservedPlayerBloodlust.SetReference(0f);
         }
     }
     void PlayerBloodShield_OnSetReference(int previousValue, int newValue)
     {
         if (newValue < previousValue)
         {
-            bloodlustValue = bloodlustValue - (bloodlustValue / 4f);
-            SetBloodlustReference();
+            ObservedPlayerBloodlust.SetReference(
+                ObservedPlayerBloodlust.GetReference() - (ObservedPlayerBloodlust.GetReference() / 4f)
+                );
         }
     }
-    void SetBloodlustReference()
+    void PlayerBloodlust_OnSetReference(float previousValue, float newValue)
     {
-        ObservedPlayerBloodlust.SetReference(bloodlustCurve.Evaluate(bloodlustValue / bloodlustMaxValue));
+        BloodlustPercent.SetReference(bloodlustCurve.Evaluate(newValue / bloodlustMaxValue));
     }
 }

@@ -1430,7 +1430,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -1500.0002, y: 100.00012}
+  m_AnchoredPosition: {x: -1500, y: 100}
   m_SizeDelta: {x: 3000, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &209018469
@@ -7175,7 +7175,7 @@ MonoBehaviour:
   minCooldown: 0.1
   cooldownTimeBase: 0.5
   shotSpeed: 100
-  ObservedPlayerBloodlust: {fileID: 11400000, guid: e1339b7b484a08c45b220bb8cbb05d7e, type: 2}
+  ObservedPlayerBloodlust: {fileID: 11400000, guid: 73904e20f76bfbb49954f3d2fd220677, type: 2}
   bloodlustMaxCooldownReduction: 0.5
   bloodlustCurve:
     serializedVersion: 2
@@ -7933,7 +7933,7 @@ MonoBehaviour:
   spawnTime: 120
   spawnAtAwake: 0
   ActiveBossBloodManager: {fileID: 11400000, guid: a3943174e0f87a64193a68f0b58f8cd5, type: 2}
-  ObservedPlayerBloodlust: {fileID: 11400000, guid: e1339b7b484a08c45b220bb8cbb05d7e, type: 2}
+  ObservedPlayerBloodlust: {fileID: 11400000, guid: 73904e20f76bfbb49954f3d2fd220677, type: 2}
   spawnTimerSpeed: 5
   spawnTimeSpeedCurve:
     serializedVersion: 2
@@ -15257,7 +15257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a2832a4da23624986cca64cfe306ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObservedPlayerBloodlust: {fileID: 11400000, guid: e1339b7b484a08c45b220bb8cbb05d7e, type: 2}
+  ObservedPlayerBloodlustPercent: {fileID: 11400000, guid: 73904e20f76bfbb49954f3d2fd220677, type: 2}
   text: {fileID: 95680018}
 --- !u!114 &1064221754
 MonoBehaviour:
@@ -15319,7 +15319,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1500.0002, y: 100.00012}
+  m_AnchoredPosition: {x: 1500, y: 100}
   m_SizeDelta: {x: 3000, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1070371046
@@ -15477,7 +15477,7 @@ MonoBehaviour:
   minCooldown: 0.05
   cooldownTimeBase: 0.5
   shotSpeed: 50
-  ObservedPlayerBloodlust: {fileID: 11400000, guid: e1339b7b484a08c45b220bb8cbb05d7e, type: 2}
+  ObservedPlayerBloodlust: {fileID: 11400000, guid: 73904e20f76bfbb49954f3d2fd220677, type: 2}
   bloodlustMaxCooldownReduction: 0.5
   bloodlustCurve:
     serializedVersion: 2
@@ -16141,6 +16141,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  BloodlustPercent: {fileID: 11400000, guid: 73904e20f76bfbb49954f3d2fd220677, type: 2}
 --- !u!114 &1127143755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16170,7 +16171,7 @@ MonoBehaviour:
   upgradeRequired: {fileID: 11400000, guid: de66d1476fe12b54b974658af928ac2f, type: 2}
   ObservedUpgradeChoice: {fileID: 11400000, guid: c3aea8ccf46f7084792904e6082e33ce, type: 2}
   PlayerBloodlust: {fileID: 11400000, guid: e1339b7b484a08c45b220bb8cbb05d7e, type: 2}
-  bloodlustDrainPerSecond: 0.1
+  bloodlustDrainPerSecond: 100
 --- !u!1 &1140511307
 GameObject:
   m_ObjectHideFlags: 0
@@ -16481,7 +16482,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 1500.0002, y: -100.00012}
+  m_AnchoredPosition: {x: 1500, y: -100}
   m_SizeDelta: {x: 3000, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1197528252
@@ -22668,7 +22669,7 @@ MonoBehaviour:
   minCooldown: 0.1
   cooldownTimeBase: 0.5
   shotSpeed: 50
-  ObservedPlayerBloodlust: {fileID: 11400000, guid: e1339b7b484a08c45b220bb8cbb05d7e, type: 2}
+  ObservedPlayerBloodlust: {fileID: 11400000, guid: 73904e20f76bfbb49954f3d2fd220677, type: 2}
   bloodlustMaxCooldownReduction: 0.1
   bloodlustCurve:
     serializedVersion: 2
@@ -23002,7 +23003,7 @@ MonoBehaviour:
   minCooldown: 0.05
   cooldownTimeBase: 2
   shotSpeed: 100
-  ObservedPlayerBloodlust: {fileID: 11400000, guid: e1339b7b484a08c45b220bb8cbb05d7e, type: 2}
+  ObservedPlayerBloodlust: {fileID: 11400000, guid: 73904e20f76bfbb49954f3d2fd220677, type: 2}
   bloodlustMaxCooldownReduction: 1
   bloodlustCurve:
     serializedVersion: 2
@@ -23628,7 +23629,7 @@ MonoBehaviour:
   spawnAtAwake: 1
   bossIsActive: 0
   ObservedBossBloodManager: {fileID: 11400000, guid: a3943174e0f87a64193a68f0b58f8cd5, type: 2}
-  ObservedPlayerBloodlust: {fileID: 11400000, guid: e1339b7b484a08c45b220bb8cbb05d7e, type: 2}
+  ObservedPlayerBloodlust: {fileID: 11400000, guid: 73904e20f76bfbb49954f3d2fd220677, type: 2}
   spawnTimerSpeed: 5
   spawnTimeSpeedCurve:
     serializedVersion: 2
@@ -23911,7 +23912,7 @@ MonoBehaviour:
   minCooldown: 0.05
   cooldownTimeBase: 0.5
   shotSpeed: 50
-  ObservedPlayerBloodlust: {fileID: 11400000, guid: e1339b7b484a08c45b220bb8cbb05d7e, type: 2}
+  ObservedPlayerBloodlust: {fileID: 11400000, guid: 73904e20f76bfbb49954f3d2fd220677, type: 2}
   bloodlustMaxCooldownReduction: 0.5
   bloodlustCurve:
     serializedVersion: 2
@@ -25238,7 +25239,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1500.0002, y: -100.00012}
+  m_AnchoredPosition: {x: -1500, y: -100}
   m_SizeDelta: {x: 3000, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &136750879861975312
