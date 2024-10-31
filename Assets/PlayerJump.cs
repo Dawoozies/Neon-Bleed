@@ -28,7 +28,7 @@ public class PlayerJump : MonoBehaviour, IVelocityComponent
 
         if(Input.GetButton("Jump"))
         {
-            jumpHeldTime += Time.deltaTime;
+            jumpHeldTime += Time.unscaledDeltaTime;
         }
         else
         {

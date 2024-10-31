@@ -6,6 +6,7 @@ public abstract class ObservedReference<T> : ScriptableObject
 {
     //keep reference to thing
     //expose setter
+    [SerializeField]
     protected T Reference;
     protected Dictionary<int, List<IObserver<T>>> observerPriorityLookUp = new();
     protected Dictionary<int, List<Action<T, T>>> actionPriorityLookUp = new();

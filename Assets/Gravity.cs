@@ -19,7 +19,7 @@ public class Gravity : PhysMovement, IVelocityComponent
     {
         Vector2 projectedVel = gravityDirection;
         projectedVel.Scale(rb.velocity);
-        Vector2 dv = (projectedVel + gravityDirection) * Time.fixedDeltaTime;
+        Vector2 dv = (projectedVel + gravityDirection) * Time.fixedUnscaledDeltaTime;
         results = Physics2D.CircleCastAll(rb.position, circleCollider.radius, dv.normalized, dv.magnitude, onCastCollisionLayerMask);
         if(results.Length > 0)
         {

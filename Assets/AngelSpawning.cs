@@ -12,6 +12,7 @@ public class AngelSpawning : MonoBehaviour, IObserver<BossBloodManager>
     float spawnTimer;
     public float spawnDistance;
     public float spawnVariance;
+    public bool paused;
     public bool spawnAtAwake;
     public bool bossIsActive;
     public ObservedBossBloodManager ObservedBossBloodManager;
@@ -45,6 +46,8 @@ public class AngelSpawning : MonoBehaviour, IObserver<BossBloodManager>
     }
     private void Update()
     {
+        if (paused)
+            return;
         if (bossIsActive)
             return;
 
@@ -76,5 +79,13 @@ public class AngelSpawning : MonoBehaviour, IObserver<BossBloodManager>
     void OnAngelDefeated(BloodManager bloodManager)
     {
         ActiveAngelCount.Decrement();
+    }
+    public void Pause()
+    {
+        paused = true;
+    }
+    public void Play()
+    {
+        paused = false;
     }
 }

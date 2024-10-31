@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e40a8647b00fcd4e8ac84406977ea8b, type: 3}
+  m_Name: SoulShot
+  m_EditorClassIdentifier: 
+  upgradeName: Soul Shot
+  description: '+ 1 Soul Shot
+
+
+    By using your own soul potential you can form
+    kinetic projectiles.
+
+    This is your basic shot type.'
+  entityStats: {fileID: 11400000, guid: 3373478f968a92647a6ce71a49be470c, type: 2}
+  weaponStats:
+    weaponId: 0
+    shotAngles: 00000000

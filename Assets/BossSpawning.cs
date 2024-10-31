@@ -18,6 +18,8 @@ public class BossSpawning : MonoBehaviour
     public float spawnTimerSpeed;
     public AnimationCurve spawnTimeSpeedCurve;
     public bool allowBossRepeat;
+
+    public ObservedInt ActiveAngelCount;
     private void Awake()
     {
         ActiveBossBloodManager.SetReference(null);
@@ -27,6 +29,8 @@ public class BossSpawning : MonoBehaviour
     }
     private void Update()
     {
+        if (paused)
+            return;
         if (!allowBossRepeat && bossIndex >= bosses.Length)
             return;
         if (ActiveBossBloodManager.GetReference() != null)
@@ -46,6 +50,7 @@ public class BossSpawning : MonoBehaviour
             newAngel.SetSpawnPosition(spawnPoint.position, 0.3f);
 
             BossBloodManager bossBloodManager = newAngel.GetComponent<BossBloodManager>();
+            ActiveAngelCount.Increment();
             bossBloodManager.RegisterOnBloodDepletedCallback(OnBossDefeated);
             ActiveBossBloodManager.SetReference(bossBloodManager);
 
@@ -58,6 +63,16 @@ public class BossSpawning : MonoBehaviour
     }
     void OnBossDefeated(BloodManager bloodManager)
     {
+        ActiveAngelCount.Decrement();
         ActiveBossBloodManager.SetReference(null);
+    }
+    public bool paused;
+    public void Pause()
+    {
+        paused = true;
+    }
+    public void Play()
+    {
+        paused = false;
     }
 }

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletIndex: 1
   shotCooldown: 0.8
+  manualOnly: 0
   angles:
   - 0
   - 90
@@ -106,7 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07344341e10500a4b819360fc26d4eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponIndices: 01000000
+  weaponIndices: 
+  randomChoiceCount: 1
   randomlyChooseWeaponOnStart: 1
 --- !u!1 &2334889240368755546
 GameObject:
@@ -154,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletIndex: 1
   shotCooldown: 0.2
+  manualOnly: 0
   currentAngle: 180
   angleIncreaseSpeed: 100
   pingPong: 1
@@ -5201,6 +5204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodMax: 30
+  blood: 0
   bleedIntensity: 0
   bleedIntensityMultiplier: 2
   bleedParticleSystem: {fileID: 5641920532598137152}
@@ -5413,6 +5417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletIndex: 1
   shotCooldown: 0.8
+  manualOnly: 0
   angles:
   - 0
   - 30
@@ -5475,6 +5480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletIndex: 1
   shotCooldown: 0.8
+  manualOnly: 0
   angles:
   - 45
   - 135

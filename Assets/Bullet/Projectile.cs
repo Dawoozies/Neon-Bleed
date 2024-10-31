@@ -70,6 +70,10 @@ public class Projectile : MonoBehaviour
     }
     public virtual void RecalculateShotDirs()
     {
+        if(!entityStats.WeaponIsUnlocked(weaponId))
+        {
+            return;
+        }
         List<int> shotAngles = entityStats.GetShotAngles(weaponId);
         shotDirs = new Vector2[shotAngles.Count];
         for (int i = 0; i < shotDirs.Length; i++)

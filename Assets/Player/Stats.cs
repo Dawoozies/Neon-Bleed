@@ -49,7 +49,10 @@ public class Stats : ScriptableObject
         }
         else
         {
-            weaponsUnlocked.Add(newWeaponStats);
+            WeaponStats newWeapon = new WeaponStats();
+            newWeapon.weaponId = newWeaponStats.weaponId;
+            newWeapon.CopyAngles(newWeaponStats);
+            weaponsUnlocked.Add(newWeapon);
         }
         FireOnValidate();
     }
@@ -117,6 +120,7 @@ public class Stats : ScriptableObject
         {
             if(weaponStats.weaponId == weaponId)
             {
+                Debug.Log($"Getting shot angles for {weaponId}");
                 return weaponStats.shotAngles;
             }
         }
