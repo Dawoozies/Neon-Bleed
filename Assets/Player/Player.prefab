@@ -5665,8 +5665,8 @@ MonoBehaviour:
   PlayerMaxBloodRequired: {fileID: 11400000, guid: 86a65b09c11606140b3a88aa84e15a4b, type: 2}
   PlayerBloodCollected: {fileID: 11400000, guid: 95f3f97319ed83b438d54c9ffacde6c7, type: 2}
   PlayerSoulPower: {fileID: 11400000, guid: 57deb29a586c53343ab11b4ca0046d56, type: 2}
-  bloodRequiredForLevelUp: 50
-  bloodRequiredIncreasePerLevel: 1
+  bloodRequiredForLevelUp: 2500
+  bloodRequiredIncreasePerLevel: 0
   drinkRadius: 2
   angelBloodMask:
     serializedVersion: 2
@@ -5704,7 +5704,7 @@ MonoBehaviour:
   ObservedPlayerBloodShield: {fileID: 11400000, guid: dc6cbacd692a491469e03ec7f83f88f3, type: 2}
   defaultMaxHealthValue: 10
   defaultHealthValue: 10
-  defaultShieldValue: 3
+  defaultShieldValue: 1
   onPlayerDead:
     m_PersistentCalls:
       m_Calls:
@@ -5737,7 +5737,7 @@ MonoBehaviour:
   ObservedPlayerHealth: {fileID: 11400000, guid: 8e85270645da0ee4891cdd3a13ad835c, type: 2}
   ObservedPlayerBloodShield: {fileID: 11400000, guid: dc6cbacd692a491469e03ec7f83f88f3, type: 2}
   ObservedPlayerBloodlust: {fileID: 11400000, guid: e1339b7b484a08c45b220bb8cbb05d7e, type: 2}
-  bloodlustMaxValue: 1000
+  bloodlustMaxValue: 10000
   bloodlustValue: 0
   bloodlustCurve:
     serializedVersion: 2

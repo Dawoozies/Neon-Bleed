@@ -10,6 +10,7 @@ public class StaticData : MonoBehaviour
     }
     public RectTransform canvas;
     public ObservedColorPalette ObservedActiveColorPalette;
+    public List<ColorPalette> colorPalettes;
     public ColorPalette ActiveColorPalette;
     [ReorderableList]
     public OffScreenLine[] OffScreenLines;
@@ -135,6 +136,18 @@ public class StaticData : MonoBehaviour
                 break;
         }
         return OffScreenLines[(int)offScreenSide].GetDelay(lerpParameter);
+    }
+    public void RandomColorPalette()
+    {
+        int i = Random.Range(0,colorPalettes.Count);
+        var oldColorPalette = ActiveColorPalette;
+        var newColorPalette = colorPalettes[i];
+        if(oldColorPalette != null)
+        {
+            colorPalettes.Add(oldColorPalette);
+        }
+        colorPalettes.RemoveAt(i);
+        ActiveColorPalette = newColorPalette;
     }
 }
 public enum OffScreenSide

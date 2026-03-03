@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 public class UpgradeManager : MonoBehaviour
 {
+    public static UpgradeManager ins;
     public ObservedInt ObservedPlayerSoulPower;
     public ObservedInt UpgradesLeft;
     public ObservedUpgrade ObservedUpgradeChoice;
@@ -15,6 +16,7 @@ public class UpgradeManager : MonoBehaviour
     public UnityEvent onUpgradeCompleted;
     private void Awake()
     {
+        ins = this;
         UpgradesLeft.SetReference(0);
         ObservedUpgradeChoice.SetReference(null);
     }
@@ -31,13 +33,13 @@ public class UpgradeManager : MonoBehaviour
     }
     void PlayerSoulPower_OnSetReference(int previousValue, int newValue)
     {
-        int requirementForUpgrade = (upgradesCollected + 1)* soulPowerRequiredForUpgrade;
-        Debug.Log($"Requirement For Upgrade = {requirementForUpgrade}");
-        if(newValue >= requirementForUpgrade)
-        {
-            onPlayerCanUpgrade?.Invoke();
-            UpgradesLeft.Increment();
-        }
+        //int requirementForUpgrade = (upgradesCollected + 1)* soulPowerRequiredForUpgrade;
+        //Debug.Log($"Requirement For Upgrade = {requirementForUpgrade}");
+        //if(newValue >= requirementForUpgrade)
+        //{
+        //    onPlayerCanUpgrade?.Invoke();
+        //    UpgradesLeft.Increment();
+        //}
     }
     void UpgradeChoice_OnSetReference(Upgrade previousRef, Upgrade newRef)
     {
@@ -45,6 +47,11 @@ public class UpgradeManager : MonoBehaviour
         UpgradesLeft.Decrement();
         if (UpgradesLeft.GetReference() <= 0)
             onUpgradeCompleted?.Invoke();
+    }
+    public void Upgrade()
+    {
+        onPlayerCanUpgrade?.Invoke();
+        UpgradesLeft.Increment();
     }
     private void Update()
     {

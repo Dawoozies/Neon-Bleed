@@ -5,6 +5,7 @@ using uPools;
 
 public class AngelSpawning : MonoBehaviour, IObserver<BossBloodManager>
 {
+    public static AngelSpawning ins;
     [Layer] public int defaultLayer;
     public Transform angelSpawnPoint;
     public GameObject[] angelPrefabs;
@@ -25,12 +26,14 @@ public class AngelSpawning : MonoBehaviour, IObserver<BossBloodManager>
 
     public int maxAngelsAtOnce;
     public ObservedInt ActiveAngelCount;
+    public int angelsDefeated;
     private void Awake()
     {
         if(!spawnAtAwake)
             spawnTimer = spawnTime;
 
         ActiveAngelCount.SetReference(0);
+        ins = this;
     }
     private void OnEnable()
     {
@@ -70,6 +73,7 @@ public class AngelSpawning : MonoBehaviour, IObserver<BossBloodManager>
             BloodManager bloodManager = newAngel.GetComponent<BloodManager>();
             ActiveAngelCount.Increment();
             bloodManager.RegisterOnBloodDepletedCallback(OnAngelDefeated);
+            StaticData.ins.RandomColorPalette();
         }
     }
     public void OnSetReference(BossBloodManager previousRef, BossBloodManager newRef)
@@ -78,7 +82,9 @@ public class AngelSpawning : MonoBehaviour, IObserver<BossBloodManager>
     }
     void OnAngelDefeated(BloodManager bloodManager)
     {
+        angelsDefeated++;
         ActiveAngelCount.Decrement();
+        UpgradeManager.ins.Upgrade();
     }
     public void Pause()
     {

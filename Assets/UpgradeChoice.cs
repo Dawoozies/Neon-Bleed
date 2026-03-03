@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using uPools;
 
@@ -10,6 +11,7 @@ public class UpgradeChoice : MonoBehaviour
     public ObservedInt ActiveAngelCount;
     public int choicesPerUpgrade;
     public bool canDoUpgrade;
+    public UpgradePool pool;
     private void OnEnable()
     {
         ObservedUpgradesLeft.RegisterObserver(0, UpgradesLeft_OnSetReference);
@@ -35,10 +37,17 @@ public class UpgradeChoice : MonoBehaviour
                 && transform.childCount == 0;
             if(canDoUpgrade)
             {
+                var toPickFrom = pool.upgrades.ToList();
                 for(int i = 0; i < choicesPerUpgrade; i++)
                 {
-                    GameObject upgradeChoice = SharedGameObjectPool.Rent(upgradeChoices[Random.Range(0, upgradeChoices.Length)]);
-                    upgradeChoice.transform.SetParent(transform, false);
+                    UpgradeSelection upgradeSelection = SharedGameObjectPool.Rent(upgradeChoices[Random.Range(0, upgradeChoices.Length)]).GetComponent<UpgradeSelection>();
+                    int selectedIndex = Random.Range(0, toPickFrom.Count);
+                    upgradeSelection.upgrade = toPickFrom[selectedIndex];
+                    upgradeSelection.InitialSetup();
+                    upgradeSelection.UpgradeTextMotion();
+                    upgradeSelection.InvokeOnRent();
+                    toPickFrom.RemoveAt(selectedIndex);
+                    upgradeSelection.transform.SetParent(transform, false);
                 }
             }
         }

@@ -7313,7 +7313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &540846754
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7328,9 +7328,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 904548617}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 125, y: -50}
   m_SizeDelta: {x: 50, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &540846755
@@ -7751,7 +7751,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1649976293}
   bosses:
   - {fileID: 1918858399774282133, guid: 30e57281aa82c294bb2a143f20f3f658, type: 3}
-  spawnTime: 120
+  spawnTime: 5
   spawnAtAwake: 0
   ActiveBossBloodManager: {fileID: 11400000, guid: a3943174e0f87a64193a68f0b58f8cd5, type: 2}
   ObservedPlayerBloodlust: {fileID: 11400000, guid: 73904e20f76bfbb49954f3d2fd220677, type: 2}
@@ -7994,8 +7994,8 @@ MonoBehaviour:
   mouseHeldTimeMax: 1
   colorGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0, b: 0, a: 1}
-    key1: {r: 1, g: 0.9935299, b: 0, a: 1}
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 0.99215686, b: 0, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -8019,7 +8019,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_ColorSpace: -1
+    m_ColorSpace: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
 --- !u!212 &733911223
@@ -8062,9 +8062,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -8084,7 +8084,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -14422,7 +14422,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 1036638198}
   ObservedActiveColorPalette: {fileID: 11400000, guid: df1c1980ea98d114d96d114ae81eb8be, type: 2}
-  ActiveColorPalette: {fileID: 11400000, guid: f6229f557938df84296a3118ed1f8840, type: 2}
+  colorPalettes:
+  - {fileID: 11400000, guid: f57881255ef6de344b3cd114f166ca21, type: 2}
+  - {fileID: 11400000, guid: 8643433991d23474396dde5c69d34c24, type: 2}
+  - {fileID: 11400000, guid: f6229f557938df84296a3118ed1f8840, type: 2}
+  - {fileID: 11400000, guid: 1627c857dff1cc94ba9d14083c33ae2b, type: 2}
+  - {fileID: 11400000, guid: 84e3c6b4aa9cb67479b907c8acf6928d, type: 2}
+  - {fileID: 11400000, guid: 36b159df294b7e84eaf744f91ae99059, type: 2}
+  ActiveColorPalette: {fileID: 0}
   OffScreenLines:
   - points:
     - {fileID: 2134614712}
@@ -15033,8 +15040,9 @@ MonoBehaviour:
   - {fileID: 678050020589896748, guid: 2718aaa66d9865e409d901d348c13e45, type: 3}
   ObservedUpgradesLeft: {fileID: 11400000, guid: 226b9d42a31ca044483e8eef12390b5a, type: 2}
   ActiveAngelCount: {fileID: 11400000, guid: 4e2c5d53e6b849542b2705b0fefde814, type: 2}
-  choicesPerUpgrade: 3
+  choicesPerUpgrade: 2
   canDoUpgrade: 0
+  pool: {fileID: 11400000, guid: c93a8c1f8484f8f4985f96f0a9a05600, type: 2}
 --- !u!114 &1070371049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15058,7 +15066,7 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
+  m_ChildScaleWidth: 1
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
 --- !u!222 &1070371050
@@ -16326,7 +16334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1362304486
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16341,9 +16349,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 904548617}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 75, y: -50}
   m_SizeDelta: {x: 50, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1362304487
@@ -17828,15 +17836,15 @@ MonoBehaviour:
   angelPrefabs:
   - {fileID: 3556888254987139034, guid: 0f2e6c199c4ed91409e2a93dda553116, type: 3}
   - {fileID: 7095535048519529442, guid: fd23a362b2deb1941982477ea4aae286, type: 3}
-  spawnTime: 10
+  spawnTime: 1
   spawnDistance: 15
-  spawnVariance: 5
+  spawnVariance: 1
   paused: 0
   spawnAtAwake: 1
   bossIsActive: 0
   ObservedBossBloodManager: {fileID: 11400000, guid: a3943174e0f87a64193a68f0b58f8cd5, type: 2}
   ObservedPlayerBloodlust: {fileID: 11400000, guid: 73904e20f76bfbb49954f3d2fd220677, type: 2}
-  spawnTimerSpeed: 5
+  spawnTimerSpeed: 1
   spawnTimeSpeedCurve:
     serializedVersion: 2
     m_Curve:
@@ -17861,8 +17869,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxAngelsAtOnce: 5
+  maxAngelsAtOnce: 1
   ActiveAngelCount: {fileID: 11400000, guid: 4e2c5d53e6b849542b2705b0fefde814, type: 2}
+  angelsDefeated: 0
 --- !u!4 &1814010508
 Transform:
   m_ObjectHideFlags: 0

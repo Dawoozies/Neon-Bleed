@@ -20,6 +20,7 @@ public class BossSpawning : MonoBehaviour
     public bool allowBossRepeat;
 
     public ObservedInt ActiveAngelCount;
+    bool bossActive;
     private void Awake()
     {
         ActiveBossBloodManager.SetReference(null);
@@ -33,16 +34,26 @@ public class BossSpawning : MonoBehaviour
             return;
         if (!allowBossRepeat && bossIndex >= bosses.Length)
             return;
-        if (ActiveBossBloodManager.GetReference() != null)
-            return;
 
         if (spawnTimer > 0)
         {
-            spawnTimer -= Time.deltaTime * (1 + spawnTimerSpeed* spawnTimeSpeedCurve.Evaluate(ObservedPlayerBloodlust.GetReference()));
+            if (bossActive)
+                spawnTimer -= Time.deltaTime * (1 + spawnTimerSpeed * spawnTimeSpeedCurve.Evaluate(ObservedPlayerBloodlust.GetReference()));
         }
         else
         {
             spawnTimer = spawnTime;
+
+            if (bossActive)
+                StaticData.ins.RandomColorPalette();
+        }
+
+        if (ActiveBossBloodManager.GetReference() != null)
+            return;
+
+
+        if (AngelSpawning.ins.angelsDefeated == 2)
+        {
             AngelSpawn newAngel = SharedGameObjectPool.Rent(bosses[bossIndex].GetComponent<AngelSpawn>());
             newAngel.gameObject.layer = defaultLayer;
             newAngel.transform.position = spawnPoint.position + Vector3.up;
@@ -55,16 +66,21 @@ public class BossSpawning : MonoBehaviour
             ActiveBossBloodManager.SetReference(bossBloodManager);
 
             bossIndex++;
-            if(allowBossRepeat)
+            if (allowBossRepeat)
             {
                 bossIndex = bossIndex % bosses.Length;
             }
+            AngelSpawning.ins.angelsDefeated = 0;
+            StaticData.ins.RandomColorPalette();
+            bossActive = true;
+            spawnTimer = spawnTime;
         }
     }
     void OnBossDefeated(BloodManager bloodManager)
     {
         ActiveAngelCount.Decrement();
         ActiveBossBloodManager.SetReference(null);
+        bossActive = false;
     }
     public bool paused;
     public void Pause()

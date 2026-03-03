@@ -26,7 +26,6 @@ public class UpgradeSelection : MonoBehaviour, IPoolCallbackReceiver, IObserver<
     public Ease textEase;
     public Ease buttonEase;
 
-    public UpgradePool upgradePool;
 
     public UnityEvent onRent;
     public ObservedUpgrade ObservedUpgradeChoice;
@@ -51,7 +50,7 @@ public class UpgradeSelection : MonoBehaviour, IPoolCallbackReceiver, IObserver<
         upgrade.ActivateUpgrade();
         ObservedUpgradeChoice.SetReference(upgrade);
     }
-    void UpgradeTextMotion()
+    public void UpgradeTextMotion()
     {
         descriptionTextMotion = LMotion.String.Create512Bytes("", upgrade.GetUpgradeDescription(), textTime)
             .WithRichText()
@@ -82,15 +81,19 @@ public class UpgradeSelection : MonoBehaviour, IPoolCallbackReceiver, IObserver<
     }
     public void OnRent()
     {
-        upgrade = upgradePool.GetRandomUpgrade();
-        InitialSetup();
-        UpgradeTextMotion();
+        //upgrade = upgradePool.GetRandomUpgrade();
+        //InitialSetup();
+        //UpgradeTextMotion();
+        //onRent?.Invoke();
+    }
+    public void InvokeOnRent()
+    {
         onRent?.Invoke();
     }
     public void OnReturn()
     {
         CancelMotions();
-        transform.SetParent(null);
+        Destroy(gameObject);
     }
     void CancelMotions()
     {
@@ -101,7 +104,7 @@ public class UpgradeSelection : MonoBehaviour, IPoolCallbackReceiver, IObserver<
         if (buttonMotion.IsActive())
             buttonMotion.Cancel();
     }
-    void InitialSetup()
+    public void InitialSetup()
     {
         chooseUpgradeButton.transform.localScale = new Vector3(0, 1, 1);
     }

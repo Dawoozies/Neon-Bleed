@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletIndex: 1
-  shotCooldown: 0.8
+  shotCooldown: 0.16
   manualOnly: 0
   angles:
   - 0
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletIndex: 1
-  shotCooldown: 0.2
+  shotCooldown: 0.04
   manualOnly: 0
   currentAngle: 180
   angleIncreaseSpeed: 100
@@ -5416,7 +5416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletIndex: 1
-  shotCooldown: 0.8
+  shotCooldown: 0.16
   manualOnly: 0
   angles:
   - 0
@@ -5479,7 +5479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletIndex: 1
-  shotCooldown: 0.8
+  shotCooldown: 0.16
   manualOnly: 0
   angles:
   - 45
@@ -5537,6 +5537,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3605771198993301741, guid: 40c91d98a2fc7a446a987a44bebd0c6a, type: 3}
+      propertyPath: shotCooldown
+      value: 0.16
+      objectReference: {fileID: 0}
     - target: {fileID: 5646110786145905446, guid: 40c91d98a2fc7a446a987a44bebd0c6a, type: 3}
       propertyPath: m_Name
       value: RadialShoot
@@ -5562,6 +5566,10 @@ PrefabInstance:
     - target: {fileID: 2754866629580956101, guid: 5389685cfa48d9d45ae72688fb94e5f1, type: 3}
       propertyPath: m_Name
       value: 4WayMultiAngleShootB
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515027025687661070, guid: 5389685cfa48d9d45ae72688fb94e5f1, type: 3}
+      propertyPath: shotCooldown
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 7119425740691062096, guid: 5389685cfa48d9d45ae72688fb94e5f1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5621,6 +5629,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1489229941877159126}
     m_Modifications:
+    - target: {fileID: 4029583912312990635, guid: 3ba8e64cf8810ca47ae85196facc1ee1, type: 3}
+      propertyPath: shotCooldown
+      value: 0.16
+      objectReference: {fileID: 0}
     - target: {fileID: 4042658622116434676, guid: 3ba8e64cf8810ca47ae85196facc1ee1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5726,6 +5738,10 @@ PrefabInstance:
     - target: {fileID: 2235291464639570561, guid: df6261d6bfe009d49a0613e2f76b4500, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920575827301943190, guid: df6261d6bfe009d49a0613e2f76b4500, type: 3}
+      propertyPath: shotCooldown
+      value: 0.04
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

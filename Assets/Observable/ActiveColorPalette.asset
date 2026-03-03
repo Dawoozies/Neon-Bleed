@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6795f22237e9b464897bbe4e9ff23272, type: 3}
   m_Name: ActiveColorPalette
   m_EditorClassIdentifier: 
+  Reference: {fileID: 11400000, guid: f57881255ef6de344b3cd114f166ca21, type: 2}
